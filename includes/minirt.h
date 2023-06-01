@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:58:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/05/30 11:13:54 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/01 19:30:58 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libgc/gc.h"
 # include "rt_parser.h"
 # include <unistd.h>
+# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>

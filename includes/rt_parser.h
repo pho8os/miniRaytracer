@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/05/30 11:14:02 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/01 19:41:02 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ typedef struct s_sphere
 	int			color;
 }	t_sphere;
 
-typedef struct s_nvec
+typedef struct s_3d
 {
 	double		x;
 	double		y;
 	double		z;
-}	t_nvec;
+}	t_vec,	t_point; //n9iya had l3ayba
+
 
 typedef struct s_cylinder
 {
@@ -37,7 +38,7 @@ typedef struct s_cylinder
 	double		z;
 	double		diam;
 	double		height;
-	t_nvec		*nvec;
+	t_vec		*nvec;
 	int			color;
 }	t_cylinder;
 
