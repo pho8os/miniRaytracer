@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 18:55:51 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/01 19:31:58 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/02 16:50:23 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,24 @@ double dot_prod(t_vec *v, t_vec *u)
 
 t_vec	*cross_prod(t_vec *v, t_vec *u)
 {
-	t_vec	*n;
-
-	n = gc(sizeof(t_vec), 1);
-	n->x = v->y * u->z - v->z * u->y;
-	n->y = v->z * u->x - v->x * u->z;
-	n->z = v->x * u->y - v->y * u->z;
+	t_vec *const	n = gc(sizeof(t_vec), 1);
+	
+	*n = (t_vec) {
+		v->y * u->z - v->z * u->y,
+		v->z * u->x - v->x * u->z,
+		v->x * u->y - v->y * u->z
+	};
 	return(n);
 }
 
 t_vec	*vecadd(t_vec *v, t_vec *u)
 {
-	t_vec	*n;
+	t_vec *const	n = gc(sizeof(t_vec), 1);
 
-	n = gc(sizeof(t_vec), 1);
-	n->x = u->x + v->x;
-	n->y = u->y + v->y;
-	n->z = u->z + v->z;
-	return(n);
-}
+	return (*n = (t_vec){u->x + v->x, u->y + v->y, u->z + v->z}, n);
+}		
 
-t_vec	*vecscalire(t_vec *v, double nb)
+t_vec	*vecxnum(t_vec *v, double nb)
 {
 	t_vec	*n;
 
@@ -52,7 +49,7 @@ t_vec	*vecscalire(t_vec *v, double nb)
 
 t_vec	*vecsub(t_vec *v, t_vec *u)
 {
-	return(vecadd(v, vecscalire(u, -1)));
+	return(vecadd(v, vecxnum(u, -1)));
 }
 
 double lengthvec(t_vec *v)
