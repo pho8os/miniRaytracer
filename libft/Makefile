@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: absaid <absaid@student.42.fr>              +#+  +:+       +#+         #
+#    By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 07:27:30 by absaid            #+#    #+#              #
-#    Updated: 2023/05/30 09:52:45 by absaid           ###   ########.fr        #
+#    Updated: 2023/06/03 10:28:11 by mfouadi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,16 +36,16 @@ OBJS = $(SRCS:.c=.o)
 all:$(NAME)
 
 %.o:%.c libft.h get_next_line.h
-	$(CC) $(CFLAGS) -c $<
+	@$(CC) $(CFLAGS) -c $<
 
 $(NAME):$(OBJS)
-	ar cr $(NAME) $(OBJS)
+	@ar cr $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS) 
+	@rm -f $(OBJS) 
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
