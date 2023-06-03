@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_pars.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/02 19:43:14 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/03 12:36:04 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,25 @@ char *ft_strtok(char *s, char specifier)
 		buffer++;
 	}		
 	return(token);
+}
+
+void	free_pointers(char **str)
+{
+	int	i;
+
+	if (!str || !(*str))
+		return ;
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+	return ;
+}
+
+void	print_error_and_exit(char *error, char **to_free, int status)
+{
+	if (to_free != NULL)
+		free_pointers(to_free);
+	perror(error);
+	exit(status);
 }

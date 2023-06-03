@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 10:31:01 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/03 13:26:32 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	init_data(t_data *data, t_scene *scene)
 {
 	data->fd = 0;
 	data->scene = scene;
+	data->scene->cylinders = NULL;
+	data->scene->spheres = NULL;
 	return ;
 }
 
@@ -46,13 +48,26 @@ int main(int ac, char **av)
 	t_scene	scene;
 
 	if(ac != 2)
-		return(write(2, "Invalid Arguments\n", 13), 1);
+		return(write(2, "Invalid Arguments\n", 19), 1);
 	init_data(&data, &scene);
 	data.fd = checkfile_name(av[1]);
 	if(data.fd < 0)
-		return(write(2, "Invalid File\n", 12), 1);
-	// *	Parse file
-	parse_file(&data);
-	
+		return(write(2, "Invalid File\n", 14), 1);
+	parse_file_and_initialize_scene(&data);
+
 	// TODO: Thinking about rest of the implementation...
+//	-----------------------------------------------------
+
+	//	Making the connection with the graphical system (AKA: MiniLibx)
+	// Create an image (MiniLibx)
+	//	Draw_in_an_image();
+	// ...
+	// ...
+	// ...
+	// keybord_hooks() :
+			// ESC key,
+			// red cross on the window's frame must close the window
+	// close(data.fd);
+	// If something has to be freed, it should be freed
+	return (0);
 }
