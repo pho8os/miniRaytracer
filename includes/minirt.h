@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:58:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/01 19:30:58 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/03 09:31:49 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,4 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-
-
-
-#endif
+#endif // MINIRT_H

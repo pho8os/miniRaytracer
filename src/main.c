@@ -6,12 +6,11 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 09:06:28 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/03 09:37:08 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minirt.h"
-# include "includes/rt_parser.h"
+#include "../includes/minirt.h"
 
 /*
 	• Allowed functions :
@@ -47,11 +46,11 @@ int main(int ac, char **av)
 	t_scene	scene;
 
 	if(ac != 2)
-		return(write(2, "Unvalid Args\n", 13), 1);
+		return(write(2, "Invalid Arguments\n", 13), 1);
 	init_data(&data, &scene);
 	data.fd = checkfile_name(av[1]);
 	if(data.fd < 0)
-		return(write(2, "Unvalid file\n", 12), 1);
+		return(write(2, "Invalid File\n", 12), 1);
 	// *	Parse file
 	parse_file(&data);
 	

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_pars.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/02 19:43:14 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/03 09:21:03 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
-#include "../includes/minirt.h"
+#include "minirt.h"
 
 // t_scene *ft_newobj(void *obj,int type)
 // {

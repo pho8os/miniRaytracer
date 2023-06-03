@@ -6,14 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 09:04:20 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/03 09:32:10 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_PARSER_H
 #define RT_PARSER_H
-
-# include "../libgc/gc.h"
 
 enum s_type
 {

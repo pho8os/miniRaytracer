@@ -6,11 +6,10 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 08:59:50 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/03 09:24:15 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
 #include "../includes/minirt.h"
 
 // *	Return type of the object

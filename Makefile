@@ -9,7 +9,9 @@ HEADER =	includes/minirt.h \
 			libgc/gc.h \
 			libft/libft.h
 
-SRC = 		main.c	\
+INC_HEADERS =	-Iincludes
+
+SRC = 		src/main.c	\
 			parsing/rt_parsing.c \
 			libgc/gc.c \
 			libgc/gc_utils.c 
@@ -18,21 +20,24 @@ OBJ = $(SRC:.c=.o)
 
 LIBFT_ARCHIVE = libft/libft.a
 
+OBJ_DIR = $(patsubst %, obj/%, $(OBJ))
+
 RM = rm -rf
 
 all : mylibft $(NAME)
 
-$(NAME): $(OBJ) $(HEADER)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_ARCHIVE) -o $(NAME)
+$(NAME): $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(OBJ_DIR) $(LIBFT_ARCHIVE) -o $(NAME)
 
-%.o : %.c $(HEADER)
-	$(CC) $(CFLAGS) -o $@ -c $<
+obj/%.o : %.c $(HEADER)
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC_HEADER) -c $< -o $@
 
 mylibft :
 	make -C libft
 
 clean :
-	$(RM) $(OBJ)
+	$(RM) obj
 	make clean -C libft
 
 fclean : clean
