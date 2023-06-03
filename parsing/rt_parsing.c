@@ -88,6 +88,8 @@ void	parse_file_and_initialize_scene(t_data *data)
 	// while (line)
 	// {
 	// 	line = get_next_line(data->fd);
+	//	if (!line)
+	//		break;
 	// 	splited_line = ft_split(line, ' ');
 	// 	if (!splited_line)
 	// 		print_error_and_exit("Parsing Error", NULL, 2);
