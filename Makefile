@@ -4,32 +4,40 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
-HEADER = includes/minirt.h includes/rt_parser.h libgc/gc.h libft/libft.h
+HEADER =	includes/minirt.h \
+			includes/rt_parser.h \
+			libgc/gc.h \
+			libft/libft.h
 
-SRC =  main.c	parsing/rt_parsing.c libgc/gc.c libgc/gc_utils.c \
+SRC = 		main.c	\
+			parsing/rt_parsing.c \
+			libgc/gc.c \
+			libgc/gc_utils.c 
 
 OBJ = $(SRC:.c=.o)
 
+LIBFT_ARCHIVE = libft/libft.a
 
+RM = rm -rf
 
-all : $(NAME) mylibft
+all : mylibft $(NAME)
 
-mylibft : 
-	make -C libft
+$(NAME): $(OBJ) $(HEADER)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_ARCHIVE) -o $(NAME)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(NAME): $(OBJ) $(HEADER) mylibft
-	$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
+mylibft :
+	make -C libft
 
 clean :
-	rm -f $(OBJ)
+	$(RM) $(OBJ)
 	make clean -C libft
 
 fclean : clean
-	rm -f $(NAME)
-	rm -f libft/libft.a
+	$(RM) $(NAME)
+	make fclean -C libft
 
 re : fclean all
 

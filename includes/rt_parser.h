@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/02 21:13:45 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/03 09:04:20 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 # include "../libgc/gc.h"
 
-
-typedef struct s_object
+enum s_type
 {
-	int		type;
-}	t_object;
+	ERROR,
+	SPHERE,
+	CYLINDER
+}	t_type;
 
 typedef struct s_3d
 {
@@ -28,36 +29,46 @@ typedef struct s_3d
 	double		z;
 }	t_vec,	t_point;
 
+// *	All spheres	* //
+
 typedef struct s_sphere
 {
-	int type;
-	t_point center;
-	double		diam;
-	int			color;
-	t_object *next;
+	int				type;
+	t_point			center;
+	double			diam;
+	int				color;
+	struct s_sphere	*next;
 }	t_sphere;
 
+// *	All cylinders	* //
 typedef struct s_cylinder
 {
-	int type;
-	t_point		center;
-	double		diam;
-	double		height;
-	t_vec		*nvec;
-	int			color;
-	t_object *next;
+	t_vec				*nvec;
+	t_point				center;
+	int					type;
+	double				diam;
+	double				height;
+	int					color;
+	struct s_cylinder	*next;
 }	t_cylinder;
 
+// *	The whole given scene	* //
+typedef struct	s_scene{
+	t_cylinder	*cylinders;
+	t_sphere	*spheres;
+}	t_scene;
 
-typedef struct s_data{
-	data type camera
-	data type light
-	data type ambiant
-	
-} t_data;
-// t_scene *rt_parsing(int fd);
+// *	General data	* //
+typedef struct	s_data{
+	int		fd;
+	t_scene	*scene;
+}	t_data;
+
+// *	Parsing Functions	* //
+
+void	parse_file(t_data *data);
 // void addobj(t_scene **scene, t_scene *new);
 // t_scene *ft_newobj(void *obj,int type);
-char *ft_strtok(char *s, char specifier);
+// char *ft_strtok(char *s, char specifier);
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: absaid <absaid@student.42.fr>              +#+  +:+       +#+         #
+#    By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 07:27:30 by absaid            #+#    #+#              #
-#    Updated: 2023/05/30 09:52:45 by absaid           ###   ########.fr        #
+#    Updated: 2023/06/03 09:05:19 by mfouadi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,23 +29,21 @@ ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
 ft_lstadd_front.c ft_lstnew.c ft_lstlast.c ft_lstsize.c ft_lstadd_back.c \
 ft_lstmap.c ft_lstiter.c ft_lstclear.c ft_lstdelone.c get_next_line.c get_next_line_utils.c 
 
-
-
 OBJS = $(SRCS:.c=.o)
 
-all:$(NAME)
+all : $(NAME)
 
 %.o:%.c libft.h get_next_line.h
-	$(CC) $(CFLAGS) -c $<
+	@ $(CC) $(CFLAGS) -c $<
 
 $(NAME):$(OBJS)
-	ar cr $(NAME) $(OBJS)
+	@ ar cr $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS) 
+	@ rm -f $(OBJS) 
 
 fclean: clean
-	rm -f $(NAME)
+	@ rm -f $(NAME)
 
 re: fclean all
 
