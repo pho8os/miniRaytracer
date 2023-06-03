@@ -3,40 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/02 21:09:49 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/03 10:31:34 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
 #include "../includes/minirt.h"
 
-
-
-t_object	*objparse(char *line, int fd)
+// *	Return type of the object
+int	object_type(char *first_keyword)
 {
-	char **const s = ft_split(line, ' ');
-	if (!line)
-		return (NULL);
+	// TODO : Freeing double pointer `s` before each return()
+	char **const s = ft_split(first_keyword, ' ');
+	if (!first_keyword)
+		return (ERROR);
 	if(ft_strncmp(s[0], "sp", 2))
-		return(parsesph(s));
+		return(SPHERE);
 	if(ft_strncmp(s[0], "cy", 2))
-		return(parsecyl(s));
-	return(NULL);
+		return(CYLINDER);
+	return(ERROR);
 }
 
-t_object *rt_parsing(int fd)
+// *	Check for errors in the given file.rt parameter
+void	parse_file(t_data *data)
 {
-	int i[3];
-
-	char *line;
-	
-	line  = get_next_line(fd);
-	while(!*line)
-		line = get_next_line(fd);
-	t_object *const	obj = objparse(get_next_line(fd), fd);
-	
-	return (obj);
+	(void)data;
+	return ;
 }
