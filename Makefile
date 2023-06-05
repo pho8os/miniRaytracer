@@ -1,6 +1,10 @@
+
 NAME = minirt
 
 CC = cc
+
+SRC =  src/main.c	parsing/rt_parsing.c libgc/gc.c libgc/gc_utils.c\
+	parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parsesp.c  \
 
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 
@@ -10,11 +14,6 @@ HEADER =	includes/minirt.h		\
 			libft/libft.h
 
 INC_HEADERS =	-Iincludes
-
-SRC = 		src/main.c				\
-			parsing/rt_parsing.c	\
-			libgc/gc.c 				\
-			libgc/gc_utils.c 
 
 OBJ = $(SRC:.c=.o)
 

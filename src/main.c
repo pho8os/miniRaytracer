@@ -6,11 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 13:26:32 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/05 01:07:25 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minirt.h"
+#include "../includes/rt_parser.h"
 
 /*
 	• Allowed functions :
@@ -21,42 +22,65 @@
 	• All functions of the MinilibX
 */
 
-// *	Check file name syntax. does it finish with ".rt"?
-int	checkfile_name(char *file)
+int checkfile(char *file)
 {
-	int	len;
+	int len;
 
 	len = ft_strlen(file) - 3;
-	if(ft_strncmp(file + len, ".rt", 3))
-		return(-1);
-	return(open(file, O_RDONLY));
+	if (ft_strncmp(file + len, ".rt", 3))
+		return (-1);
+	return (open(file, O_RDONLY));
 }
 
-// *	Initialize data struct
-void	init_data(t_data *data, t_scene *scene)
+void initdata(t_data *data)
 {
-	data->fd = 0;
-	data->scene = scene;
-	data->scene->cylinders = NULL;
-	data->scene->spheres = NULL;
-	return ;
+	data->amlight = NULL;
+	data->cam = NULL;
+	data->cyl = NULL;
+	data->sph = NULL;
+	data->lights = NULL;
+	// initilize mlx params;
 }
 
+void printdata(t_data *data)
+{
+	printf("C %f,%f,%f  %f,%f,%f    %d\n", data->cam->center.x, data->cam->center.y, data->cam->center.z, data->cam->nvec.x, data->cam->nvec.y, data->cam->nvec.z, data->cam->FOV);
+	printf("A %f   %d\n", data->amlight->range, data->amlight->color);
+	while (data->cyl)
+	{
+		printf("cy   %f,%f,%f   %f,%f,%f  %f  %f  %d\n", data->cyl->center.x, data->cyl->center.y, data->cyl->center.z, data->cyl->nvec.x, data->cyl->nvec.y, data->cyl->nvec.z, data->cyl->diam, data->cyl->height, data->cyl->color);
+		data->cyl = data->cyl->next;
+	}
+	while (data->sph)
+	{
+		printf("sp   %f,%f,%f     %f    %d\n", data->sph->center.x, data->sph->center.y, data->sph->center.z, data->sph->diam, data->sph->color);
+		data->sph = data->sph->next;
+	}
+	while (data->lights)
+	{
+		printf("HEY\n");
+		printf("L   %f,%f,%f     %f    %d\n", data->lights->pos.x, data->lights->pos.y, data->lights->pos.z, data->lights->range, data->lights->color);
+		data->lights = data->lights->next;
+	}
+}
 int main(int ac, char **av)
 {
-	t_data	data;
-	t_scene	scene;
+	int fd;
+	t_data data;
 
-	if(ac != 2)
-		return(write(2, "Invalid Arguments\n", 19), 1);
-	init_data(&data, &scene);
-	data.fd = checkfile_name(av[1]);
-	if(data.fd < 0)
-		return(write(2, "Invalid File\n", 14), 1);
-	parse_file_and_initialize_scene(&data);
-
+	if (ac != 2)
+		return (write(2, "Unvalid Args\n", 13), 1);
+	fd = checkfile(av[1]);
+	if (fd < 0)
+		return (write(2, "Unvalid file\n", 12), 1);
+	initdata(&data);
+	rt_parsing(&data, fd);
+	printdata(&data);
+	// init_mlx();
+	// render(data);
+	
 	// TODO: Thinking about rest of the implementation...
-//	-----------------------------------------------------
+	//	-----------------------------------------------------
 
 	//	Making the connection with the graphical system (AKA: MiniLibx)
 	// Create an image (MiniLibx)
@@ -65,9 +89,8 @@ int main(int ac, char **av)
 	// ...
 	// ...
 	// keybord_hooks() :
-			// ESC key,
-			// red cross on the window's frame must close the window
+	// ESC key,
+	// red cross on the window's frame must close the window
 	// close(data.fd);
 	// If something has to be freed, it should be freed
-	return (0);
 }
