@@ -1,2 +1,1 @@
-TODO : object->color = (atoi(firstpart) << 16) | (atoi(second) << 8) | atoi(third)
 
