@@ -6,20 +6,36 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 10:29:51 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/05 01:13:14 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RT_PARSER_H
 #define RT_PARSER_H
+# include "../libgc/gc.h"
+# include "../libft/libft.h"
+
+/* ************************************************************************** */
+/*									Enum Struct								  */
+/* ************************************************************************** */
 
 enum s_type
 {
+	// Use of ERROR is optional for readability purposes
 	ERROR,
+	LIGHT,
+	PLANE,
+	CAMERA,
 	SPHERE,
-	CYLINDER
-}	t_type;
+	CYLINDER,
+	AMBIENT_LIGHT
+} t_type;
 
+/* ************************************************************************** */
+/*							Linked list of each object						  */
+/* ************************************************************************** */
+
+// * Vector
 typedef struct s_3d
 {
 	double		x;
@@ -27,47 +43,61 @@ typedef struct s_3d
 	double		z;
 }	t_vec,	t_point;
 
-// *	All spheres	* //
-
 typedef struct s_sphere
 {
-	int				type;
-	t_point			center;
-	double			diam;
-	int				color;
-	struct s_sphere	*next;
+	int type;
+	t_point center;
+	double		diam;
+	int			color;
+	struct s_sphere *next;
 }	t_sphere;
 
-// *	All cylinders	* //
+typedef struct s_cam
+{
+	int type;
+	t_point center;
+	t_vec 	nvec;
+	int FOV;
+}	t_cam;
+
+typedef struct s_light
+{
+	int type;
+	t_point pos;
+	double range;
+	int color;
+	struct s_light *next;
+}	t_light;
+
 typedef struct s_cylinder
 {
-	t_vec				*nvec;
-	t_point				center;
-	int					type;
-	double				diam;
-	double				height;
-	int					color;
-	struct s_cylinder	*next;
+	int type;
+	t_point		center;
+	double		diam;
+	double		height;
+	t_vec		nvec;
+	int			color;
+	struct s_cylinder *next;
 }	t_cylinder;
 
-// *	The whole given scene	* //
-typedef struct	s_scene{
-	t_cylinder	*cylinders;
-	t_sphere	*spheres;
-}	t_scene;
+typedef struct s_data
+{
+	t_cam	*cam;
+	t_cylinder *cyl;
+	t_sphere *sph;
+	t_light *lights;
+	t_light *amlight;
+} t_data;
 
-// *	General data	* //
-typedef struct	s_data{
-	int		fd;
-	t_scene	*scene;
-}	t_data;
+/* ************************************************************************** */
+/*							Parsing Functions								  */
+/* ************************************************************************** */
 
-// *	Parsing Functions	* //
-
-void	parse_file(t_data *data);
-// void addobj(t_scene **scene, t_scene *new);
-// t_scene *ft_newobj(void *obj,int type);
-// char *ft_strtok(char *s, char specifier);
+void	parsecam(t_data *data, char **s);
+void	parsecy(t_data *data, char **s);
+void	parselight(t_data *data, char **s);
+void	parsesp(t_data *data, char **s);
+void	rt_parsing(t_data *data, int fd);
 
 #endif
 
