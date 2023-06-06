@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 08:46:32 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 09:44:24 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void parsecam(t_data *data, char **s)
 		ft_atod(coordv[0]),
 		ft_atod(coordv[1]),
 		ft_atod(coordv[2])};
-	data->cam->FOV = ft_atoi(s[3]);
+	data->cam->FOV = ft_atoi(s[3], 0);
 	if (s[4])
 		return (puts("num of args invalid"), exit(0), (void)0);
 }
