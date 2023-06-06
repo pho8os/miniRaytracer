@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/05 21:29:46 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 00:00:45 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ int main(int ac, char **av)
 	t_data data;
 
 	if (ac != 2)
-		return (write(2, "Unvalid Args\n", 13), 1);
+		ft_error("Invalid Arguments", 1, 0);
 	fd = checkfile(av[1]);
 	if (fd < 0)
-		return (write(2, "Unvalid file\n", 12), 1);
+		ft_error("Invalid File", 1, 0);
 	initdata(&data);
 	rt_parsing(&data, fd);
 	printdata(&data);
