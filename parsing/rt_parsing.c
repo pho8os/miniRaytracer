@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 11:08:16 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:28:47 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	objparse(t_data *data, char *line)
 		return(parsecy(data, s), (void)0);
 	// TODO : plane
 	else if (!ft_strncmp(s[0], "pl", 2) && (ft_strlen(s[0]) == 2))
-		return ;
+		return (parsepl(data, s), (void)0);
 	else
 		ft_error("ERROR: Invalid Input rt.parsing.c", 1, 0);
 	return ;

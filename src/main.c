@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 08:36:53 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 23:36:11 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void initdata(t_data *data)
 	data->amlight = NULL;
 	data->cam = NULL;
 	data->cyl = NULL;
+	data->pl = NULL;
 	data->sph = NULL;
 	data->lights = NULL;
 }
@@ -45,24 +46,29 @@ void initdata(t_data *data)
 void printdata(t_data *data)
 {
 	if (data->cam)
-		printf("C %f,%f,%f  %f,%f,%f    %d\n", data->cam->center.x, data->cam->center.y, data->cam->center.z, data->cam->nvec.x, data->cam->nvec.y, data->cam->nvec.z, data->cam->FOV);
+		printf("C %.2f,%.2f,%.2f  %.2f,%.2f,%.2f    %d\n", data->cam->center.x, data->cam->center.y, data->cam->center.z, data->cam->nvec.x, data->cam->nvec.y, data->cam->nvec.z, data->cam->FOV);
 	if (data->amlight)
-		printf("A %f   %d\n", data->amlight->range, data->amlight->color);
-	while (data->cyl)
-	{
-		printf("cy   %f,%f,%f   %f,%f,%f  %f  %f  %d\n", data->cyl->center.x, data->cyl->center.y, data->cyl->center.z, data->cyl->nvec.x, data->cyl->nvec.y, data->cyl->nvec.z, data->cyl->diam, data->cyl->height, data->cyl->color);
-		data->cyl = data->cyl->next;
-	}
-	while (data->sph)
-	{
-		printf("sp   %f,%f,%f     %f    %d\n", data->sph->center.x, data->sph->center.y, data->sph->center.z, data->sph->diam, data->sph->color);
-		data->sph = data->sph->next;
-	}
+		printf("A %.2f   %d\n", data->amlight->range, data->amlight->color);
 	while (data->lights)
 	{
 		// printf("HEY\n");
-		printf("L   %f,%f,%f     %f    %d\n", data->lights->pos.x, data->lights->pos.y, data->lights->pos.z, data->lights->range, data->lights->color);
+		printf("L   %.2f,%.2f,%.2f     %.2f    %d\n", data->lights->pos.x, data->lights->pos.y, data->lights->pos.z, data->lights->range, data->lights->color);
 		data->lights = data->lights->next;
+	}
+	while (data->cyl)
+	{
+		printf("cy   %.2f,%.2f,%.2f   %.2f,%.2f,%.2f  %.2f  %.2f  %d\n", data->cyl->center.x, data->cyl->center.y, data->cyl->center.z, data->cyl->nvec.x, data->cyl->nvec.y, data->cyl->nvec.z, data->cyl->diam, data->cyl->height, data->cyl->color);
+		data->cyl = data->cyl->next;
+	}
+	while (data->pl)
+	{
+		printf("pl   %.2f,%.2f,%.2f   %.2f,%.2f,%.2f  %d\n", data->pl->point.x, data->pl->point.y, data->pl->point.z, data->pl->nvec.x, data->pl->nvec.y, data->pl->nvec.z, data->pl->color);
+		data->pl = data->pl->next;
+	}
+	while (data->sph)
+	{
+		printf("sp   %.2f,%.2f,%.2f     %.2f    %d\n", data->sph->center.x, data->sph->center.y, data->sph->center.z, data->sph->diam, data->sph->color);
+		data->sph = data->sph->next;
 	}
 }
 int main(int ac, char **av)
