@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 00:00:45 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 08:36:53 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void printdata(t_data *data)
 	}
 	while (data->lights)
 	{
-		printf("HEY\n");
+		// printf("HEY\n");
 		printf("L   %f,%f,%f     %f    %d\n", data->lights->pos.x, data->lights->pos.y, data->lights->pos.z, data->lights->range, data->lights->color);
 		data->lights = data->lights->next;
 	}

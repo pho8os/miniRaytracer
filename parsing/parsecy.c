@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:21:20 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 02:36:48 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 08:38:56 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ void	parsecy(t_data *data, char **s)
 
 	cy->type = CYLINDER;
 	cy->center = (t_point) {
-		atof(coordp[0]), 
-		atof(coordp[1]), 
-		atof(coordp[2])
+		ft_atod(coordp[0]), 
+		ft_atod(coordp[1]), 
+		ft_atod(coordp[2])
 	};
 	cy->nvec = (t_vec) {
-		atof(coordv[0]), 
-		atof(coordv[1]), 
-		atof(coordv[2])
+		ft_atod(coordv[0]), 
+		ft_atod(coordv[1]), 
+		ft_atod(coordv[2])
 	};
-	cy->diam = atof(s[3]);
-	cy->height = atof(s[4]);
+	cy->diam = ft_atod(s[3]);
+	cy->height = ft_atod(s[4]);
 	cy->color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
 	cy->next = NULL;
 	add_cylinder_back(&(data->cyl), cy);
