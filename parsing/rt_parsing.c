@@ -6,44 +6,33 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 02:49:46 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 08:48:05 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt_parser.h"
 #include "../includes/minirt.h"
 
-// int	check_if_empty_line(char *s)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (!s)
-// 		return (0);
-// 	while (*s++)
-// 		if (*s != '\n' || *s != ' ' || *s != '	')
-// 			return (1);
-// 	return (0);
-// }
-
 void	objparse(t_data *data, char *line)
 {
 	// TODO : There are some maps that have an xpm file for texture
 	// TODO :  Check_if_range_is_respected_else_return_error() funtion
+	// TODO :  Check_if_range_is_respected_else_return_error() funtion
+	// TODO : 'l', 'p', 'tx'...
+	// TODO : Handle problem of parsing 255,,,,,255,255
 	char **const s = ft_split(line, ' ');
 
 	if (!s || !(*s))
 		return ;
 	if(!ft_strncmp(s[0], "C", 1) && (ft_strlen(s[0]) == 1))
 		return(parsecam(data, s), (void)0);
-	else if ((!ft_strncmp(s[0], "A", 1) || !ft_strncmp(s[0], "L", 1)) 
-		&& (ft_strlen(s[0]) == 1))
+	else if ((!ft_strncmp(s[0], "A", 1) || !ft_strncmp(s[0], "L", 1) 
+		|| !ft_strncmp(s[0], "l", 1)) && (ft_strlen(s[0]) == 1))
 		return(parselight(data, s), (void)0);
 	else if(!ft_strncmp(s[0], "sp", 2) && (ft_strlen(s[0]) == 2))
 		return(parsesp(data, s), (void)0);
 	else if (!ft_strncmp(s[0], "cy", 2) && (ft_strlen(s[0]) == 2))
 		return(parsecy(data, s), (void)0);
-	// Check_if_in_range_is_respected_else_return_error(retuned value, specifier);
 	return ;
 }
 

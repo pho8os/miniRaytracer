@@ -5,7 +5,7 @@ CC = cc
 
 SRC =  src/main.c	parsing/rt_parsing.c libgc/gc.c libgc/gc_utils.c\
 	parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parsesp.c  \
-	parsing/utils_pars.c
+	parsing/utils_pars.c parsing/print_error.c
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 HEADER =	includes/minirt.h		\

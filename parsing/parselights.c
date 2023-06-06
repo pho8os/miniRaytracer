@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parselights.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:40:59 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/05 00:23:44 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/06 08:38:32 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	parselight(t_data *data, char **s)
 		data->amlight->type = AMBIENT_LIGHT;
 		rgb = ft_split(s[2], ',');
 		data->amlight->color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
-		return(data->amlight->range = atof(s[1]), (void)0);
+		return(data->amlight->range = ft_atod(s[1]), (void)0);
 	}
 	else
 	{
@@ -57,13 +57,13 @@ void	parselight(t_data *data, char **s)
 		
 		// printf("\n----|%s, %s, %s|-----\n" , coord[0], coord[1], coord[2]);
 		light->pos = (t_point) {
-		atof(coord[0]), 
-		atof(coord[1]), 
-		atof(coord[2])
+		ft_atod(coord[0]), 
+		ft_atod(coord[1]), 
+		ft_atod(coord[2])
 		};
 		// printf("\n----|%f, %f, %f|-----\n" , light->pos.x, light->pos.y, light->pos.z);
 		light->color = (ft_atoi(rgb[0]) << 15) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
-		light->range = atof(s[2]);
+		light->range = ft_atod(s[2]);
 		light->next = NULL;
 		return(add_light_back(&(data->lights), light));
 	}

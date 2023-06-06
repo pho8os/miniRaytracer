@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/05 23:59:23 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 08:03:23 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ void	parselight(t_data *data, char **s);
 void	parsesp(t_data *data, char **s);
 void	rt_parsing(t_data *data, int fd);
 void	ft_error(char *error, int status, int opt);
-
+double	ft_atod(char *s);
 #endif
 
