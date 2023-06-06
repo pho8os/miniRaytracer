@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:40:59 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 08:32:48 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/06 09:45:50 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void	parselight(t_data *data, char **s)
 		data->amlight = gc(sizeof(t_light), 1);
 		data->amlight->type = AMBIENT_LIGHT;
 		rgb = ft_split(s[2], ',');
+		data->amlight->color = (ft_atoi(rgb[0], 1) << 16) | (ft_atoi(rgb[1], 1) << 8) | ft_atoi(rgb[2], 1);
 		(rgb[3]) && (ft_error("Error\n", 1, 0), 0);
-		data->amlight->color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
+
 		return(data->amlight->range = ft_atod(s[1]), (void)0);
 	}
 	else
@@ -65,7 +66,7 @@ void	parselight(t_data *data, char **s)
 		ft_atod(coord[2])
 		};
 		// printf("\n----|%f, %f, %f|-----\n" , light->pos.x, light->pos.y, light->pos.z);
-		light->color = (ft_atoi(rgb[0]) << 15) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
+		light->color = (ft_atoi(rgb[0], 1) << 15) | (ft_atoi(rgb[1], 1) << 8) | ft_atoi(rgb[2], 1);
 		light->range = ft_atod(s[2]);
 		light->next = NULL;
 		return(add_light_back(&(data->lights), light));
