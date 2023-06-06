@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:40:59 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 08:38:32 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 08:32:48 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	parselight(t_data *data, char **s)
 		data->amlight = gc(sizeof(t_light), 1);
 		data->amlight->type = AMBIENT_LIGHT;
 		rgb = ft_split(s[2], ',');
+		(rgb[3]) && (ft_error("Error\n", 1, 0), 0);
 		data->amlight->color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
 		return(data->amlight->range = ft_atod(s[1]), (void)0);
 	}
@@ -54,7 +55,9 @@ void	parselight(t_data *data, char **s)
 		light->type = LIGHT;
 		coord = ft_split(s[1], ',');
 		rgb = ft_split(s[3], ',');
-		
+		(rgb[3]) && (ft_error("Error\n", 1, 0), 0);
+		(coord[3]) && (ft_error("Error\n", 1, 0), 0);
+		(rgb[3]) && (ft_error("Error\n", 1, 0), 0);
 		// printf("\n----|%s, %s, %s|-----\n" , coord[0], coord[1], coord[2]);
 		light->pos = (t_point) {
 		ft_atod(coord[0]), 
