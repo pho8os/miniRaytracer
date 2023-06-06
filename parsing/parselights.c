@@ -68,6 +68,7 @@ void	parselight(t_data *data, char **s)
 		// printf("\n----|%f, %f, %f|-----\n" , light->pos.x, light->pos.y, light->pos.z);
 		light->color = (ft_atoi(rgb[0], 1) << 15) | (ft_atoi(rgb[1], 1) << 8) | ft_atoi(rgb[2], 1);
 		light->range = ft_atod(s[2]);
+		// (light->range > 1 && light->range < 0) && (ft_error("Light error\n", 1, 0), 0);
 		light->next = NULL;
 		return(add_light_back(&(data->lights), light));
 	}

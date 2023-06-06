@@ -17,10 +17,8 @@ void parsecam(t_data *data, char **s)
 	char **const coordp = ft_split(s[1], ',');
 	char **const coordv = ft_split(s[2], ',');
 
-	// TODO: Coding our own atoi and ft_atod if we consider that sunch input
-
 	if (data->cam)
-		return (puts("cam is already exist"), exit(1), (void)0); // ft_error
+		return (puts("cam is already exist"), exit(1), (void)0);
 	data->cam = gc(sizeof(t_cam), 1);
 	data->cam->type = CAMERA;
 	data->cam->center = (t_point){
