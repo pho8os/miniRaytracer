@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsecy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:21:20 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/04 21:26:05 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/06 02:36:48 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	add_cylinder_back(t_cylinder **head, t_cylinder *new)
 
 void	parsecy(t_data *data, char **s)
 {
+	// TODO: Freeing the 3 double pointers??
 	char **const coordp = ft_split(s[1], ',');
 	char **const coordv = ft_split(s[2], ',');
 	char **const rgb = ft_split(s[5], ',');
