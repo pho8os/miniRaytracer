@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 09:37:57 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 11:08:16 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	objparse(t_data *data, char *line)
 	// TODO :  Check_if_range_is_respected_else_return_error() funtion
 	// TODO : 'l', 'p', 'tx'...
 	// TODO : Handle problem of parsing 255,,,,,255,255
-	char **const s = ft_split(line, ' ');
+	char **const s = ft_split(line, " \t", 0);
 
 	if (!s || !(*s))
 		return ;
