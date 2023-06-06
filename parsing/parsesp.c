@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:34:22 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 18:42:56 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/06 08:31:45 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	parsesp(t_data *data, char **s)
 	char **const rgb = ft_split(s[3], ',');
 	t_sphere *const sp = gc(sizeof(t_sphere), 1);
 
+	(rgb[3]) && (ft_error("Error\n", 1, 0), 0);
+	(coordp[3]) && (ft_error("Error\n", 1, 0), 0);
 	sp->type = SPHERE;
 	sp->center = (t_point) {
 		atof(coordp[0]), 
