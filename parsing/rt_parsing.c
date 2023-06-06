@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 00:01:43 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 01:04:26 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ void	rt_parsing(t_data *data, int fd)
 
 	line = NULL;
 	i = 0;
+	// TODO: Freeing the pointer in the inner while??
 	while(1)
 	{
 		line  = get_next_line(fd);
 		if (!line)
 			break ;
+		while (!*line)
+			line = get_next_line(fd);
 		objparse(data, line);
 		free(line);
 		i++;
