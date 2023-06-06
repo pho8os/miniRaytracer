@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parsesp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:34:22 by absaid            #+#    #+#             */
 /*   Updated: 2023/06/06 08:31:45 by absaid           ###   ########.fr       */
@@ -35,11 +35,11 @@ void	parsesp(t_data *data, char **s)
 	(coordp[3]) && (ft_error("Error\n", 1, 0), 0);
 	sp->type = SPHERE;
 	sp->center = (t_point) {
-		atof(coordp[0]), 
-		atof(coordp[1]), 
-		atof(coordp[2])
+		ft_atod(coordp[0]), 
+		ft_atod(coordp[1]), 
+		ft_atod(coordp[2])
 	};
-	sp->diam = atof(s[2]);
+	sp->diam = ft_atod(s[2]);
 	sp->color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
 	sp->next = NULL;
 	add_sphere_back(&(data->sph), sp);

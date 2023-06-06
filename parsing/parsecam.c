@@ -12,32 +12,28 @@
 
 #include "../includes/rt_parser.h"
 
-void	parsecam(t_data *data, char **s)
+void parsecam(t_data *data, char **s)
 {
 	char **const coordp = ft_split(s[1], ',');
 	char **const coordv = ft_split(s[2], ',');
-	
-	// TODO: Coding our own atoi and atof if we consider that sunch input 
-	// "5fds4fdsf45fds54" "fdsfsfsfds" "fsdf54*fdsfds" "----8+56*+754fd"
-	// as an error
+
+	// TODO: Coding our own atoi and ft_atod if we consider that sunch input
+
 	if (data->cam)
-		return (puts("cam is already exist"), exit(1), (void)0);//ft_error
+		return (puts("cam is already exist"), exit(1), (void)0); // ft_error
 	data->cam = gc(sizeof(t_cam), 1);
 	data->cam->type = CAMERA;
-	data->cam->center = (t_point) {
-		atof(coordp[0]), 
-		atof(coordp[1]), 
-		atof(coordp[2])
-	};
-	data->cam->nvec = (t_vec) {
-		atof(coordv[0]), 
-		atof(coordv[1]), 
-		atof(coordv[2])
-	};
-	(coordp[3]) && (ft_error("Error\n", 1, 0), 0);
-	(coordv[3]) && (ft_error("Error\n", 1, 0), 0);
+	data->cam->center = (t_point){
+		ft_atod(coordp[0]),
+		ft_atod(coordp[1]),
+		ft_atod(coordp[2])};
+	data->cam->nvec = (t_vec){
+		ft_atod(coordv[0]),
+		ft_atod(coordv[1]),
+		ft_atod(coordv[2])};
+  	(coordp[3]) && (ft_error("Error\n", 1, 0), 0);
+	  (coordv[3]) && (ft_error("Error\n", 1, 0), 0);
 	data->cam->FOV = ft_atoi(s[3]);
 	if (s[4])
 		return (puts("num of args invalid"), exit(0), (void)0);
 }
-
