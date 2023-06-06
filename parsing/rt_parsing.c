@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 08:48:05 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 09:07:38 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void	objparse(t_data *data, char *line)
 		return(parsesp(data, s), (void)0);
 	else if (!ft_strncmp(s[0], "cy", 2) && (ft_strlen(s[0]) == 2))
 		return(parsecy(data, s), (void)0);
+	// TODO : plane
+	else if (!ft_strncmp(s[0], "pl", 2) && (ft_strlen(s[0]) == 2))
+		return ;
+	else
+		ft_error("ERROR: Invalid Input rt.parsing.c", 1, 0);
 	return ;
 }
 
