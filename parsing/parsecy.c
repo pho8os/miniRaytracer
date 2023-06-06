@@ -3,9 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsecy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:21:20 by absaid            #+#    #+#             */
+
 /*   Updated: 2023/06/06 09:44:52 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -33,6 +34,9 @@ void	parsecy(t_data *data, char **s)
 	char **const rgb = ft_split(s[5], ',');
 	t_cylinder *const cy = gc(sizeof(t_cylinder), 1);
 
+	(rgb[3]) && (ft_error("Error\n", 1, 0), 0);
+	(coordp[3]) && (ft_error("Error\n", 1, 0), 0);
+	(coordv[3]) && (ft_error("Error\n", 1, 0), 0);
 	cy->type = CYLINDER;
 	cy->center = (t_point) {
 		ft_atod(coordp[0]), 

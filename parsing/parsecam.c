@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parsecam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
 /*   Updated: 2023/06/06 09:44:24 by mfouadi          ###   ########.fr       */
@@ -32,6 +32,8 @@ void parsecam(t_data *data, char **s)
 		ft_atod(coordv[1]),
 		ft_atod(coordv[2])};
 	data->cam->FOV = ft_atoi(s[3], 0);
+  	(coordp[3]) && (ft_error("Error\n", 1, 0), 0);
+	  (coordv[3]) && (ft_error("Error\n", 1, 0), 0);
 	if (s[4])
 		return (puts("num of args invalid"), exit(0), (void)0);
 }
