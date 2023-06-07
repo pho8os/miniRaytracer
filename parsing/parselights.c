@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:40:59 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 11:38:15 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/07 00:19:45 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,29 @@ void	parselight(t_data *data, char **s)
 	// fprintf(stderr, "light ==> %p\n", light);
 	if(!ft_strncmp(s[0], "A", 1))
 	{
+		(s[3]) && (ft_error("Error : args num parselight.c\n", 1, 0), 0);
 		if(data->amlight)  
-			(puts("errorAM"), exit(1), 0);
+			(ft_error("Error : Double A", 1, 0), 0);
 		data->amlight = gc(sizeof(t_light), 1);
 		data->amlight->type = AMBIENT_LIGHT;
 		rgb = ft_split(s[2], ",", 1);
-		(ft_strchr(",", s[2][0]) || ft_strchr(",", s[2][ft_strlen(s[2]) - 1])) && (puts("erroor m9aaawed"), exit(1), 0);
+		(ft_strchr(",", s[2][0]) || ft_strchr(",", s[2][ft_strlen(s[2]) - 1])) && (ft_error("Error: parse_light.c\n", 1, 0), 0);
 		data->amlight->color = (ft_atoi(rgb[0], 1) << 16) | (ft_atoi(rgb[1], 1) << 8) | ft_atoi(rgb[2], 1);
-		(rgb[3]) && (ft_error("Error\n", 1, 0), 0);
-
+		(rgb[3]) && (ft_error("Error: parse_light.c\n", 1, 0), 0);
 		return(data->amlight->range = ft_atod(s[1]), (void)0);
 	}
 	else
 	{
+		(s[4]) && (ft_error("Error : args num parselight.c\n", 1, 0), 0); 
 		light = gc(sizeof(t_light), 1);
 		light->type = LIGHT;
 		coord = ft_split(s[1], ",", 1);
-		(ft_strchr(",", s[1][0]) || ft_strchr(",", s[1][ft_strlen(s[1]) - 1])) && (puts("erroor m9aaawed"), exit(1), 0);
-		(ft_strchr(",", s[3][0]) || ft_strchr(",", s[3][ft_strlen(s[3]) - 1])) && (puts("erroor m9aaawed"), exit(1), 0);
+		(ft_strchr(",", s[1][0]) || ft_strchr(",", s[1][ft_strlen(s[1]) - 1])) && (ft_error("Error: parse_light.c\n", 1, 0), 0);
+		(ft_strchr(",", s[3][0]) || ft_strchr(",", s[3][ft_strlen(s[3]) - 1])) && (ft_error("Error: parse_light.c\n", 1, 0), 0);
 		rgb = ft_split(s[3], ",", 1);
-		(rgb[3]) && (ft_error("Error4\n", 1, 0), 0);
-		(coord[3]) && (ft_error("Error5\n", 1, 0), 0);
-		(rgb[3]) && (ft_error("Error6\n", 1, 0), 0);
+		(rgb[3]) && (ft_error("Error: parse_light.c\n", 1, 0), 0);
+		(coord[3]) && (ft_error("Error: parse_light.c\n", 1, 0), 0);
+		(rgb[3]) && (ft_error("Error: parse_light.c\n", 1, 0), 0);
 		// printf("\n----|%s, %s, %s|-----\n" , coord[0], coord[1], coord[2]);
 		light->pos = (t_point) {
 		ft_atod(coord[0]), 

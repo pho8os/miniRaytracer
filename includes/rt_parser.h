@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 08:03:23 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/06 23:27:28 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,28 @@ typedef struct s_cylinder
 	struct s_cylinder	*next;
 }	t_cylinder;
 
+
+typedef struct s_plane
+{
+	int					type;
+	t_point				point;
+	t_vec				nvec;
+	int					color;
+	struct s_plane		*next;
+}	t_plane;
+
+
+
 typedef struct s_data
 {
 	t_cam		*cam;
 	t_cylinder	*cyl;
 	t_sphere	*sph;
 	t_light		*lights;
+	t_plane		*pl;
 	t_light		*amlight;
 } t_data;
+
 
 /* ************************************************************************** */
 /*							Parsing Functions								  */
@@ -97,6 +111,7 @@ void	parsecam(t_data *data, char **s);
 void	parsecy(t_data *data, char **s);
 void	parselight(t_data *data, char **s);
 void	parsesp(t_data *data, char **s);
+void	parsepl(t_data *data, char **s);
 void	rt_parsing(t_data *data, int fd);
 void	ft_error(char *error, int status, int opt);
 double	ft_atod(char *s);
