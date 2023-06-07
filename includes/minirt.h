@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:58:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 08:50:00 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/07 05:03:52 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <fcntl.h>
 
 #ifndef ERROR_MSG
-# define ERROR_MSG "ERROR: Incorect Input\n"
+# define ERROR_MSG "ERROR: incorect Input\n"
 #endif // FOV_ERROR
 
 #endif

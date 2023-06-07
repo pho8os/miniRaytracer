@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 23:27:28 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/07 03:26:54 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,8 @@ void	parsepl(t_data *data, char **s);
 void	rt_parsing(t_data *data, int fd);
 void	ft_error(char *error, int status, int opt);
 double	ft_atod(char *s);
+void	printdata(t_data *data);
+void	check_ranges(t_data *data);
+
 #endif
 

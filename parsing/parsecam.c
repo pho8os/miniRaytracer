@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsecam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/07 00:20:24 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/07 02:38:50 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void parsecam(t_data *data, char **s)
 	char **const coordp = ft_split(s[1], ",", 1);
 	char **const coordv = ft_split(s[2], ",", 1);
 
-	(s[4]) && (ft_error("Error : args num parsecam.c\n", 1, 0), 0); 
+	(s && s[4]) && (ft_error("Error : args num parsecam.c\n", 1, 0), 0); 
 	(ft_strchr(",", s[1][0]) || ft_strchr(",", s[1][ft_strlen(s[1]) - 1])) && (ft_error("Error\n", 1, 0), 0);
 	(ft_strchr(",", s[2][0]) || ft_strchr(",", s[2][ft_strlen(s[2]) - 1])) && (ft_error("Error\n", 1, 0), 0);
 	if (data->cam)
