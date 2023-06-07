@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parseplane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 23:14:11 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/07 00:19:07 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/07 05:17:49 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	add_plane_back(t_plane **head, t_plane *new)
 
 void	parsepl(t_data *data, char **s)
 {
-	// TODO: Freeing the 3 double pointers?? // Answer is no we will free after parsing
 	char **const coordp = ft_split(s[1], ",", 1);
 	char **const coordv = ft_split(s[2], ",", 1);
 	char **const rgb = ft_split(s[3], ",", 1);
@@ -37,9 +36,9 @@ void	parsepl(t_data *data, char **s)
 	(ft_strchr(",", s[1][0]) || ft_strchr(",", s[1][ft_strlen(s[1]) - 1])) && (ft_error("Error\n", 1, 0), 0);
 	(ft_strchr(",", s[2][0]) || ft_strchr(",", s[2][ft_strlen(s[2]) - 1])) && (ft_error("Error\n", 1, 0), 0);
 	(ft_strchr(",", s[3][0]) || ft_strchr(",", s[3][ft_strlen(s[3]) - 1])) && (ft_error("Error\n", 1, 0), 0);
-	(rgb[3]) && (ft_error("Error1\n", 1, 0), 0);
-	(coordp[3]) && (ft_error("Error2\n", 1, 0), 0);
-	(coordv[3]) && (ft_error("Error3\n", 1, 0), 0);
+	(rgb[3]) && (ft_error("Error: rgb parseplane.c\n", 1, 0), 0);
+	(coordp[3]) && (ft_error("Error: 3d vector parseplane.c\n", 1, 0), 0);
+	(coordv[3]) && (ft_error("Error: 3d n_vector parseplane.c\n", 1, 0), 0);
 	pl->type = PLANE;
 	pl->point = (t_point) {
 		ft_atod(coordp[0]), 
