@@ -3,70 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   utils_pars.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/03 12:36:04 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/08 08:45:57 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt_parser.h"
 #include "../includes/minirt.h"
 
-// t_scene *ft_newobj(void *obj,int type)
-// {
-// 	t_scene *node;
-
-// 	node = gc(sizeof(t_scene), 1);
-// 	node->object = obj;
-// 	node->type = type;
-// 	node->next = NULL;
-// 	return (node);
-// }
-
-// void addobj(t_scene **scene, t_scene *new)
-// {
-// 	(*scene) && (new -> next = *scene);
-// 	*scene = new;
-// }
-
-char *ft_strtok(char *s, char specifier)
+void	ft_error(char *error, int status, int opt)
 {
-	static char *buffer;
-	char *token;
-
-	if (!buffer)
-		buffer = s;
-	if (!*buffer)
-		return NULL;
-	token = buffer;
-	while (*buffer && *buffer != specifier)
-		buffer++;
-	while(*buffer == specifier && *buffer)
-	{
-		*buffer = 0;
-		buffer++;
-	}		
-	return(token);
-}
-
-void	free_pointers(char **str)
-{
-	int	i;
-
-	if (!str || !(*str))
-		return ;
-	i = -1;
-	while (str[++i])
-		free(str[i]);
-	free(str);
-	return ;
-}
-
-void	print_error_and_exit(char *error, char **to_free, int status)
-{
-	if (to_free != NULL)
-		free_pointers(to_free);
-	perror(error);
+	if (opt == 1)
+		perror(error);
+	if (opt == 0)
+		write(2, error, ft_strlen(error));
 	exit(status);
+}
+
+int ptrlen(char **ptr)
+{
+	int i;
+
+	i = 0;
+	while(ptr[i])
+		i++;
+	return(i);
+}
+
+double	ft_atod(char *s)
+{
+	double	res = 0.0;
+	double	div = 1.0;
+	int		sign = 1.0;
+
+
+	if (!s)
+		ft_error("Error: Invalid Input utils_pars.c\n", 1, 0);
+	if (s[0] == '-' || s[0] == '+')
+	{
+		if (s[0] == '-')
+			sign *= -1.0;
+		s++;
+	}
+	while (*s && *s >= '0' && *s <= '9')
+	{
+		res = (res * 10.0) + (*s - '0');
+		s++;
+		//check overflow
+	}	
+	if(*s == '.' && *(s + 1))
+	{
+		s++;
+		while (*s && *s >= '0' && *s <= '9')
+		{
+			res = res + (*s - '0') / (10.0 * div);
+			div = div * 10.0;
+			s++;
+		}
+	}	
+	if(*s)
+		ft_error("Error: Invalid Input utils_pars.c\n", 1, 0);
+	return (res * sign);
+	
 }

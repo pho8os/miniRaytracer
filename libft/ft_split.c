@@ -6,13 +6,14 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:55:28 by absaid            #+#    #+#             */
-/*   Updated: 2022/10/22 15:47:27 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/06 23:57:44 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
+#include"../includes/minirt.h"
 
-static int	count_words(char *str, char c)
+static int	count_words(char *str, char *c)
 {
 	int	i;
 	int	count;
@@ -20,22 +21,13 @@ static int	count_words(char *str, char c)
 	count = 0;
 	i = -1;
 	while (str[++i])
-		if (str[i] != c && (str[i + 1] == c || !str[i + 1]))
+		if (!ft_strchr(c, str[i]) && (ft_strchr(c, str[i + 1]) || !str[i + 1]))
 			count++;
 	return (count);
 }
 
-static void	free_all(char **str, int l)
-{
-	while (l)
-	{
-		free(str[l]);
-		l--;
-	}
-	free(str);
-}
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char *c, int mode)
 {
 	char	**p;
 	int		i;
@@ -47,18 +39,18 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	p = (char **)malloc(sizeof (char *) * (count_words((char *)s, c) + 1));
-	if (!p)
-		return (NULL);
 	while (++l < count_words((char *)s, c))
 	{	
-		while (s[i] && s[i] == c)
+		while (s[i] && ft_strchr(c, s[i]))
+		{
+			if(mode && ft_strchr(c, s[i]) && ft_strchr(c, s[i + 1]))
+				return(ft_error("Error : ft_split\n", 1, 0), NULL);
 			i++;
+		}
 		j = i;
-		while (s[i] != c && s[i])
+		while ( s[i] && !ft_strchr(c, s[i]) )
 			i++;
 		p[l] = ft_substr(s, j, i - j);
-		if (!p[l])
-			return (free_all(p, l), NULL);
 	}
 	return (p[l] = NULL, p);
 }
