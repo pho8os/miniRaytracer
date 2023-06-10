@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/07 05:01:16 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/10 03:40:18 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,15 @@ void	objparse(t_data *data, char *line)
 void	rt_parsing(t_data *data, int fd)
 {
 	char *line;
-	int	i;
 
 	line = NULL;
-	i = 0;
 	while(1)
 	{
 		line  = get_next_line(fd);
 		if (!line)
 			break ;
-		while (!*line)
-			line = get_next_line(fd);
 		objparse(data, line);
 		free(line);
-		i++;
 	}
 	return ;
 }
