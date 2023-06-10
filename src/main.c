@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/07 04:30:23 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/10 03:56:10 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void initdata(t_data *data)
 	// TODO : Handle problem of parsing 255,,,,,255,255
 	// TODO: Freeing the 3 double pointers?? parsecy(), parsepl()...
 	// TODO: Freeing the pointer in the inner while?? rt_parsing
-
+	// TODO: Returning an error if map is empty
 */
 
 int main(int ac, char **av)
