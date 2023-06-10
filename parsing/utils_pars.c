@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_pars.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 22:06:06 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/08 08:45:57 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ void	ft_error(char *error, int status, int opt)
 	if (opt == 0)
 		write(2, error, ft_strlen(error));
 	exit(status);
+}
+
+int ptrlen(char **ptr)
+{
+	int i;
+
+	i = 0;
+	while(ptr[i])
+		i++;
+	return(i);
 }
 
 double	ft_atod(char *s)
@@ -56,4 +66,5 @@ double	ft_atod(char *s)
 	if(*s)
 		ft_error("Error: Invalid Input utils_pars.c\n", 1, 0);
 	return (res * sign);
+	
 }

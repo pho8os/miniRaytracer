@@ -28,18 +28,22 @@ void	add_cylinder_back(t_cylinder **head, t_cylinder *new)
 
 void	parsecy(t_data *data, char **s)
 {
-	char **const coordp = ft_split(s[1], ",", 1);
-	char **const coordv = ft_split(s[2], ",", 1);
-	char **const rgb = ft_split(s[5], ",", 1);
+	// TODO: Freeing the 3 double pointers??
+	char **coordp;
+	char **coordv;
+	char **rgb;
 	t_cylinder *const cy = gc(sizeof(t_cylinder), 1);
 
-	(s && s[6]) && (ft_error("Error : args num parsecyl.c\n", 1, 0), 0);
+	(ptrlen(s) != 6) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
 	(ft_strchr(",", s[1][0]) || ft_strchr(",", s[1][ft_strlen(s[1]) - 1])) && (ft_error("Error\n", 1, 0), 0);
 	(ft_strchr(",", s[2][0]) || ft_strchr(",", s[2][ft_strlen(s[2]) - 1])) && (ft_error("Error\n", 1, 0), 0);
 	(ft_strchr(",", s[5][0]) || ft_strchr(",", s[5][ft_strlen(s[5]) - 1])) && (ft_error("Error\n", 1, 0), 0);
-	(rgb[3]) && (ft_error("Error parsecyl.c\n", 1, 0), 0);
-	(coordp[3]) && (ft_error("Error: 3d coordinates parsecyl.c\n", 1, 0), 0);
-	(coordv[3]) && (ft_error("Error 3d n_vector parsecyl.c\n", 1, 0), 0);
+	coordp = ft_split(s[1], ",", 1);
+	(ptrlen(coordp) != 3) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
+	coordv = ft_split(s[2], ",", 1);
+	(ptrlen(coordv) != 3) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
+	rgb = ft_split(s[5], ",", 1);
+	(ptrlen(rgb) != 3) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
 	cy->type = CYLINDER;
 	cy->center = (t_point) {
 		ft_atod(coordp[0]), 
