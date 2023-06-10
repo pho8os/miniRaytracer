@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parser.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
 /*   Updated: 2023/06/08 08:47:09 by absaid           ###   ########.fr       */
@@ -116,5 +116,8 @@ void	rt_parsing(t_data *data, int fd);
 void	ft_error(char *error, int status, int opt);
 double	ft_atod(char *s);
 int ptrlen(char **ptr);
+void	printdata(t_data *data);
+void	check_ranges(t_data *data);
+
 #endif
 

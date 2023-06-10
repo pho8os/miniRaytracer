@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   parsecam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
 /*   Updated: 2023/06/08 08:52:55 by absaid           ###   ########.fr       */
@@ -25,7 +25,7 @@ void parsecam(t_data *data, char **s)
 	coordv = ft_split(s[2], ",", 1);
 	(ptrlen(coordv) != 3) && (ft_error("Error : parsecam.c\n", 1, 0), 0);
 	if (data->cam)
-		return (ft_error("Error : Double cam\n", 1, 0), (void)0);
+		return (ft_error("Error : double cam parsecam.c\n", 1, 0), (void)0);
 	data->cam = gc(sizeof(t_cam), 1);
 	data->cam->type = CAMERA;
 	data->cam->center = (t_point){
