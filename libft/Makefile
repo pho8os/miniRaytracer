@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+         #
+#    By: absaid <absaid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 07:27:30 by absaid            #+#    #+#              #
-#    Updated: 2023/06/05 01:10:36 by mfouadi          ###   ########.fr        #
+#    Updated: 2023/06/17 03:40:01 by absaid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,13 @@ ft_lstadd_front.c ft_lstnew.c ft_lstlast.c ft_lstsize.c ft_lstadd_back.c \
 ft_lstmap.c ft_lstiter.c ft_lstclear.c ft_lstdelone.c get_next_line.c get_next_line_utils.c 
 
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(patsubst %, obj/%, $(SRCS:.c=.o))
 
 all:$(NAME)
 
-%.o:%.c libft.h get_next_line.h
-	$(CC) $(CFLAGS) -c $<
+obj/%.o:%.c libft.h get_next_line.h
+	mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):$(OBJS)
 	ar cr $(NAME) $(OBJS)

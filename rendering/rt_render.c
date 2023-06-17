@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   rt_render.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/30 07:58:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/17 12:30:47 by absaid           ###   ########.fr       */
+/*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
+/*   Updated: 2023/06/17 12:51:00 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-#define MINIRT_H
+#include "../includes/rt_render.h"
+#include <mlx.h>
 
-# include "rt_parser.h"
-# include "rt_render.h"
-# include <unistd.h>
-# include <math.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
+void	rt_rendering(t_data *data)
+{
+	(void)data;
+	t_mlx mlx;
 
-#ifndef ERROR_MSG
-# define ERROR_MSG "ERROR: incorect Input\n"
-#endif // FOV_ERROR
+	mlx.mlx = mlx_init();
+	mlx.win = mlx_new_window(mlx.mlx, 900, 800, "minirt");
+	// TODO : take the FOV and update the new width and the height * 4;
+	// TODO : position of camera to send rays;
 
-#endif
+
+	mlx_loop(mlx.mlx);
+}
