@@ -4,8 +4,8 @@ NAME = minirt
 CC = cc
 
 SRC =  src/main.c libgc/gc.c libgc/gc_utils.c\
-	parsing/parse_ranges.c parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parseplane.c parsing/parsesp.c parsing/rt_parsing.c parsing/utils_pars.c \
-	rendering/rt_render.c
+	parsing/parse_ranges.c parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parseplane.c parsing/parsesp.c parsing/rt_parsing.c parsing/utils_pars.c parsing/utils_vec.c \
+	render/rt_render.c
 
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
 

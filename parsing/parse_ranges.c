@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ranges.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 02:26:55 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/06/10 03:47:49 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/19 13:23:37 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	check_ranges(t_data *data)
 		cy_nvec = cy_nvec->next;
 	}
 	if (data->cam)
-		parse_nvec_ranges(&data->cam->nvec);
+		parse_nvec_ranges(&data->cam->forvec);
 	if (data->lights)
 		parse_light_ranges(data->lights->range, 0, 0);
 	if (data->amlight)

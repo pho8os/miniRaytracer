@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/18 15:05:00 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/19 21:35:43 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_new_size(t_mlx	*mlx, t_data *data)
 	
 	angle = data->cam->FOV * M_PI / 180;
 	mlx->n_width = tan(angle / 2);
-	mlx->n_height = 400 * mlx->n_width / 450;
+	mlx->n_height = 800 * mlx->n_width / 900;
 	printf("NW->%f, NH->%f\n",mlx->n_width, mlx->n_height);
 }
 void	rt_rendering(t_data *data)

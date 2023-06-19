@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/10 04:23:20 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/06/19 21:29:21 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,16 @@ void	rt_parsing(t_data *data, int fd)
 
 void printdata(t_data *data)
 {
-	if (data->cam)
-		printf("C %f,%f,%f  %f,%f,%f    %d\n", data->cam->center.x, data->cam->center.y, data->cam->center.z, data->cam->nvec.x, data->cam->nvec.y, data->cam->nvec.z, data->cam->FOV);
+	if (data->cam){
+		printf("C %f,%f,%f  %f,%f,%f    %d\n", data->cam->center.x, data->cam->center.y, data->cam->center.z, data->cam->forvec.x, data->cam->forvec.y, data->cam->forvec.z, data->cam->FOV);
+		printf("C %f,%f,%f  %f,%f,%f    %d\n", data->cam->center.x, data->cam->center.y, data->cam->center.z, data->cam->sidevec.x, data->cam->sidevec.y, data->cam->sidevec.z, data->cam->FOV);
+		printf("C %f,%f,%f  %f,%f,%f    %d\n", data->cam->center.x, data->cam->center.y, data->cam->center.z, data->cam->upvec.x, data->cam->upvec.y, data->cam->upvec.z, data->cam->FOV);
+		
+	}
 	if (data->amlight)
 		printf("A %f   %d\n", data->amlight->range, data->amlight->color);
 	while (data->lights)
 	{
-		// printf("HEY\n");
 		printf("L   %f,%f,%f     %f    %d\n", data->lights->pos.x, data->lights->pos.y, data->lights->pos.z, data->lights->range, data->lights->color);
 		data->lights = data->lights->next;
 	}

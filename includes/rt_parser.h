@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/17 12:30:34 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/19 13:25:30 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ typedef struct s_cam
 {
 	int		type;
 	t_point	center;
-	t_vec 	nvec;
+	t_vec 	forvec;
+	t_vec 	sidevec;
+	t_vec 	upvec;
 	int		FOV;
 }	t_cam;
 
@@ -119,6 +121,12 @@ double	ft_atod(char *s);
 int ptrlen(char **ptr);
 void	printdata(t_data *data);
 void	check_ranges(t_data *data);
+double dot_prod(t_vec v, t_vec u);
+t_vec	cross_prod(t_vec v, t_vec u);
+t_vec	vecadd(t_vec v, t_vec u);
+t_vec	vecxnum(t_vec v, double nb);
+t_vec	vecsub(t_vec v, t_vec u);
+double lengthvec(t_vec v);
 
 #endif
 

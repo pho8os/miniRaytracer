@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/17 12:49:45 by absaid           ###   ########.fr       */
+/*   Updated: 2023/06/19 13:20:21 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,11 @@ typedef struct s_mlx
 } t_mlx;
 
 void	rt_rendering(t_data *data);
+double dot_prod(t_vec v, t_vec u);
+t_vec	cross_prod(t_vec v, t_vec u);
+t_vec	vecadd(t_vec v, t_vec u);
+t_vec	vecxnum(t_vec v, double nb);
+t_vec	vecsub(t_vec v, t_vec u);
+double lengthvec(t_vec v);
 
 #endif
