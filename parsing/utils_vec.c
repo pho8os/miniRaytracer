@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 18:55:51 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/05 16:33:08 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/06 16:46:53 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ double lengthvec(t_vec v)
 
 t_vec normvec(t_vec v)
 {
-	retrun(vecxnum(v, lengthvec(v)));
+	return(vecxnum(v, lengthvec(v)));
 }

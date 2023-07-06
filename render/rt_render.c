@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/06 01:33:42 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/06 16:51:21 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,7 @@
 #include <mlx.h>
 
 
-// typedef struct {
-//     int red;
-//     int green;
-// } t_color;
 
-// t_color map(int x, int y, int windowWidth, int windowHeight, int startx, int starty) {
-//     t_color color;
-    
-//     color.red = (((x - startx) * 255)) / ((windowWidth) - startx);
-//     color.green = ((y - starty) * 255) / ((windowHeight) - starty);
-    
-//     return color;
-// }
 
 
 void	init_new_size(t_mlx	*mlx, t_data *data)
@@ -45,6 +33,20 @@ void	rt_rendering(t_data *data)
 
 	mlx.mlx = mlx_init();
 	mlx.win = mlx_new_window(mlx.mlx, 900, 800, "minirt");
+	int i , j = -1;
+	
+	while(++j <= 800)
+	{
+		i = -1;
+		while(++i <= 900)
+		{
+			t_ray ray;
+			ray = ft_ray(data->cam, i, j, &mlx);
+			int color =  ray.red << 16 | ray.green << 8 | 0;
+			// printf("color %x\n", color);
+			mlx_pixel_put(mlx.mlx, mlx.win, i, j, color);
+		}
+	}
 	// TODO : take the FOV and update the new width and the height * 4;
 	// TODO : position of camera to send rays;
 	init_new_size(&mlx, data);
