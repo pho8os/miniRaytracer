@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/19 13:25:30 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/05 16:33:31 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,8 @@ t_vec	cross_prod(t_vec v, t_vec u);
 t_vec	vecadd(t_vec v, t_vec u);
 t_vec	vecxnum(t_vec v, double nb);
 t_vec	vecsub(t_vec v, t_vec u);
-double lengthvec(t_vec v);
+t_vec	normvec(t_vec v);
+double	lengthvec(t_vec v);
 
 #endif
 

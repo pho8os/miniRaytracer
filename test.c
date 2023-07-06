@@ -21,7 +21,7 @@ int main()
 	void *mlx;
 	mlx = mlx_init();
 	void *win = mlx_new_window(mlx, 900, 800, "test");
-	int i, j = 199;
+	int i, j = -1;
 	while(++j <= 600)
 	{
 		i = 224;
@@ -32,6 +32,11 @@ int main()
 			color = c.red << 16 | c.green << 8 | 0;
 			mlx_pixel_put(mlx, win, i, j, color);
 		}
+		
+
 	}
+	// double x = (2 * 0 / 900) - 1;
+	// double y = (2 * 0 / 800) - 1;
+	// printf("x = %f, y = %f\n", x, y);
 	mlx_loop(mlx);
 }

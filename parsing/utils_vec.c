@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 18:55:51 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/19 14:05:04 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/05 16:33:08 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ t_vec	vecsub(t_vec v, t_vec u)
 double lengthvec(t_vec v)
 {
 	return(sqrt(dot_prod(v, v)));
+}
+
+t_vec normvec(t_vec v)
+{
+	retrun(vecxnum(v, lengthvec(v)));
 }
