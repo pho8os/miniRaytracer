@@ -7,7 +7,7 @@ SRC =  src/main.c libgc/gc.c libgc/gc_utils.c\
 	parsing/parse_ranges.c parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parseplane.c parsing/parsesp.c parsing/rt_parsing.c parsing/utils_pars.c parsing/utils_vec.c \
 	render/ft_rays.c render/rt_render.c \
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 HEADER =	includes/minirt.h		\
 			includes/rt_parser.h	\

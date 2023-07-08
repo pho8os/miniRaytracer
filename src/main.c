@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/17 14:18:32 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/06 21:38:31 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int main(int ac, char **av)
 	initdata(&data);
 	rt_parsing(&data, fd);
 	check_ranges(&data);
-	printdata(&data);
+	// printdata(&data);
 	rt_rendering(&data);
 }

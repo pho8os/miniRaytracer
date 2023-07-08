@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/19 14:03:19 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/06 19:49:13 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,8 @@ void parsecam(t_data *data, char **s)
 	if(!data->cam->sidevec.x && !data->cam->sidevec.y && !data->cam->sidevec.z)
 		data->cam->sidevec = cross_prod(data->cam->forvec, (t_vec){1, 0, 0});
 	data->cam->upvec = cross_prod(data->cam->forvec, data->cam->sidevec);
+	data->cam->forvec = normvec(data->cam->forvec);
+	data->cam->sidevec = normvec(data->cam->sidevec);
+	data->cam->upvec = normvec(data->cam->upvec);
 	data->cam->FOV = ft_atoi(s[3], 0);
 }
