@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 01:33:54 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/08 01:19:43 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/08 21:39:42 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ t_ray *ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray)
 	double ar; 
 	ar = mlx->n_height / mlx->n_width;
 	ray->origin = cam->center;
-	x_map = (double)(2 * x) / (double)900 - 1;
-	y_map = (double)(2 * y) / (double)800 - 1;
-	// printf("%f ** %f\n", x_map, y_map);
+	x_map = (double)(2 * (x + 0.5)) / (double)900 - 1;
+	y_map = (double)(2 * (y + 0.5)) / (double)800 - 1;
+
 	up = (vecxnum(cam->upvec, mlx->n_height * y_map));
-	printf("%f \n", mlx->n_height);
+
 	side = (vecxnum(cam->sidevec, mlx->n_width * x_map));
 	ray->direction = normvec(vecadd(cam->forvec, vecadd(up, side)));
-	// printf("%f ** %f ** %f \n", ray->direction.x, ray->direction.y, ray->direction.z);
+
+	ray->red = (x_map + 1  ) * 255 / 2;
+	ray->green = (y_map + 1  ) * 255 / 2;
 	return(ray);
 }
-	// ray.red = (x_map + 1  ) * 255 / 2;
-	// ray.green = (y_map + 1  ) * 255 / 2;

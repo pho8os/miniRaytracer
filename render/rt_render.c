@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/08 01:20:31 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/09 06:18:17 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_new_size(t_mlx	*mlx, t_data *data)
 	printf("NW->%f, NH->%f\n",mlx->n_width, mlx->n_height);
 }
 
-bool intersp(t_ray *ray, t_sphere *sp)
+bool intersp(t_ray *ray, t_sphere *sp, t_solution T)
 {
 	double a, b, c;
 	if(!sp)
@@ -37,8 +37,14 @@ bool intersp(t_ray *ray, t_sphere *sp)
 	c = dot_prod(vecsub(ray->origin, sp->center), vecsub(ray->origin, sp->center)) - (sp->diam / 2) * (sp->diam / 2);
 	double delta;
 	delta = (b * b) - (4 * a * c);
+	if(delta > 0.000001)
+	{
+		double t1 = (-b + sqrt(delta)) / 2 * a;
+		double t2 = (-b - sqrt(delta)) / 2 * a;
+		return((t2 > t1) * t1 + (t1 > t2) * t2);
+	}
 	if(delta >= 0.000001)
-		return (true);
+		return(true);
 	return(false);
 }
 void	rt_rendering(t_data *data)
@@ -50,21 +56,24 @@ void	rt_rendering(t_data *data)
 	mlx.win = mlx_new_window(mlx.mlx, 900, 800, "minirt");
 	int i , j = -1;
 	init_new_size(&mlx, data);
-	
+	t_solution T;
+	T.t = -1;
+	T.color = data->amlight->color;
 	while(++j <= 800)
 	{
 		i = -1;
 		while(++i <= 900)
 		{
+			t_sphere *sphere = data->sph;
 			t_ray *ray = gc(sizeof(t_ray), 1);
 			ray = ft_ray(data->cam, i, j, &mlx, ray);
-			// printf("%f ** %f ** %f \n", ray->direction.x, ray->direction.y, ray->direction.z);
 			// int color =  ray->red << 16 | ray->green << 8 | 0;
-			// printf("color : %x\t", color);
-			if(intersp(ray, data->sph) == true)
-				mlx_pixel_put(mlx.mlx, mlx.win, i, j, data->sph->color);
-			// else
-			// 	puts("no");
+			while(sphere)
+			{
+				if(intersp(ray, sphere, T))
+					mlx_pixel_put(mlx.mlx, mlx.win, i, j, T.color);
+				sphere = sphere->next;
+			}
 		}
 	}
 	// TODO : take the FOV and update the new width and the height * 4;

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/07 23:01:22 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/09 06:15:39 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct s_mlx
 	double	n_height;
 	double	pixel;
 } t_mlx;
+
+typedef struct s_solution
+{
+	double t;
+	int color;
+} t_solution;
 
 typedef struct s_ray
 {
