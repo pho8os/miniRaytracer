@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/10 05:12:05 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/10 05:48:14 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void intersp(t_ray *ray, t_sphere *sp, t_solution *T, t_light *l, t_light *am)
 	double t;
 	(void)T;
 	(void)am;
+	(void)l;
 
 	t = 0;
 	sol.a = dot_prod(ray->direction, ray->direction);
@@ -73,21 +74,25 @@ void intersp(t_ray *ray, t_sphere *sp, t_solution *T, t_light *l, t_light *am)
 		sol.t1 = (-sol.b + sqrt(sol.delta)) / 2 * sol.a;
 		sol.t2 = (-sol.b - sqrt(sol.delta)) / 2 * sol.a;
 		t = (sol.t2 > sol.t1) * sol.t1 + (sol.t1 > sol.t2) * sol.t2;
+		((t < T->t || T->t == -1) && t > EPS) && (T->t = t, T->color = sp->color, 0);
 	}
 	else if(sol.delta == 0)
 	{
 		t = -sol.b / 2 * sol.a;
+		((t < T->t || T->t == -1) && t > EPS) && (T->t = t, T->color = sp->color, 0);
 	}
+	((t < T->t || T->t == -1) && t > EPS) && (T->t = t, 0);
 	t_point p = vecadd(ray->origin, vecxnum(ray->direction, t));
-	double dot = dot_prod(normvec(vecsub(p, sp->center)) , normvec(vecsub(l->pos, p)));
+	double dot = 0;
+	if(l && t > EPS)
+		dot = dot_prod(normvec(vecsub(p, sp->center)) , normvec(vecsub(l->pos, p)));
 	// there is a diffuse : diff = dot * light->col * light->ratio
 	// so col  = amb * amb->ratio + col->obj + diffuse
-	T->t = t;
-	if(dot > 0)
-		T->color = coloradd(coefcolor(l->color, dot * l->range),coloradd(coefcolor(am->color, am->range), sp->color));
+	if(dot > 0 && l && am && t > EPS)
+		T->color = coloradd(coefcolor(l->color, dot),coloradd(coefcolor(am->color, am->range), sp->color));
 		// T->color = dot * l->color * l->range +  am->color * am->range + sp->color
-	else
-		T->color = coloradd(coefcolor(am->color, am->range), sp->color);
+	else if(dot < 0 && am && t > EPS)
+		T->color =  sp->color;
 	// no diffuse so , col = amb * ratio + obj->col	
 
 }
