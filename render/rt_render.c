@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/10 01:16:41 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:52:46 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,20 @@ void	init_new_size(t_mlx	*mlx, t_data *data)
 void interpl(t_ray *ray, t_plane *pl, t_solution *T)
 {
 	double t;
+	(void)T;
 
 	t = 1 / (dot_prod(ray->direction, pl->nvec)) * (dot_prod(pl->point, pl->nvec) - dot_prod(ray->origin, pl->nvec));
-	((t < T->t || T->t == -1) && t > EPS) && (T->t = t, T->color = pl->color);
+	// ((t < T->t || T->t == -1) && t > EPS) && (T->t = t, T->color = pl->color);
 }
 
 void intersp(t_ray *ray, t_sphere *sp, t_solution *T, t_light *l, t_light *am)
 {
 	t_eq2d sol;
 	double t;
+	(void)T;
+	(void)am;
 
-
+	t = 0;
 	sol.a = dot_prod(ray->direction, ray->direction);
 	sol.b = dot_prod(vecsub(ray->origin, sp->center), ray->direction) * 2;
 	sol.c = dot_prod(vecsub(ray->origin, sp->center), vecsub(ray->origin, sp->center)) - (sp->diam / 2) * (sp->diam / 2);
@@ -61,7 +64,7 @@ void intersp(t_ray *ray, t_sphere *sp, t_solution *T, t_light *l, t_light *am)
 	// so col  = amb * amb->ratio + col->obj + diffuse
 	if(dot > 0)
 	{
-		T->color = dot * l->color * l->range +  am->color * am->range + sp->color;
+		// T->color = dot * l->color * l->range +  am->color * am->range + sp->color;
 	}
 	else{
 	// no diffuse so , col = amb * ratio + obj->col	

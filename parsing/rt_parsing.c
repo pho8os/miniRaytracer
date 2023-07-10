@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/19 21:29:21 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:51:50 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,25 +64,25 @@ void printdata(t_data *data)
 		
 	}
 	if (data->amlight)
-		printf("A %f   %d\n", data->amlight->range, data->amlight->color);
+		printf("A %f   %f,%f,%f\n", data->amlight->range, data->amlight->color.x, data->amlight->color.y, data->amlight->color.z);
 	while (data->lights)
 	{
-		printf("L   %f,%f,%f     %f    %d\n", data->lights->pos.x, data->lights->pos.y, data->lights->pos.z, data->lights->range, data->lights->color);
+		printf("L   %f,%f,%f     %f    %f,%f,%f\n", data->lights->pos.x, data->lights->pos.y, data->lights->pos.z, data->lights->range, data->lights->color.x, data->lights->color.y, data->lights->color.z);
 		data->lights = data->lights->next;
 	}
 	while (data->cyl)
 	{
-		printf("cy   %f,%f,%f   %f,%f,%f  %f  %f  %d\n", data->cyl->center.x, data->cyl->center.y, data->cyl->center.z, data->cyl->nvec.x, data->cyl->nvec.y, data->cyl->nvec.z, data->cyl->diam, data->cyl->height, data->cyl->color);
+		printf("cy   %f,%f,%f   %f,%f,%f  %f  %f  %f,%f,%f\n", data->cyl->center.x, data->cyl->center.y, data->cyl->center.z, data->cyl->nvec.x, data->cyl->nvec.y, data->cyl->nvec.z, data->cyl->diam, data->cyl->height, data->cyl->color.x, data->cyl->color.y, data->cyl->color.z);
 		data->cyl = data->cyl->next;
 	}
 	while (data->pl)
 	{
-		printf("pl   %f,%f,%f   %f,%f,%f  %d\n", data->pl->point.x, data->pl->point.y, data->pl->point.z, data->pl->nvec.x, data->pl->nvec.y, data->pl->nvec.z, data->pl->color);
+		printf("pl   %f,%f,%f   %f,%f,%f  %f,%f,%f\n", data->pl->point.x, data->pl->point.y, data->pl->point.z, data->pl->nvec.x, data->pl->nvec.y, data->pl->nvec.z, data->pl->color.x, data->pl->color.y, data->pl->color.z);
 		data->pl = data->pl->next;
 	}
 	while (data->sph)
 	{
-		printf("sp   %f,%f,%f     %f    %d\n", data->sph->center.x, data->sph->center.y, data->sph->center.z, data->sph->diam, data->sph->color);
+		printf("sp   %f,%f,%f     %f    %f,%f,%f\n", data->sph->center.x, data->sph->center.y, data->sph->center.z, data->sph->diam, data->sph->color.x, data->sph->color.y, data->sph->color.z);
 		data->sph = data->sph->next;
 	}
 }

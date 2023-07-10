@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:34:22 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/08 09:09:55 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:46:14 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	parsesp(t_data *data, char **s)
 		ft_atod(coordp[2])
 	};
 	sp->diam = ft_atod(s[2]);
-	sp->color = (ft_atoi(rgb[0], 1) << 16) | (ft_atoi(rgb[1], 1) << 8) | ft_atoi(rgb[2], 1);
+	sp->color = (t_color){ft_atoi(rgb[0], 1), ft_atoi(rgb[1], 1), ft_atoi(rgb[2], 1)};
 	sp->next = NULL;
 	add_sphere_back(&(data->sph), sp);
 }

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/09 22:56:02 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/10 01:35:29 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ typedef struct s_3d
 	double		x;
 	double		y;
 	double		z;
-}	t_vec,	t_point;
+}	t_vec,	t_point, t_color;
 
 typedef struct s_sphere
 {
 	int				type;
 	t_point			center;
 	double			diam;
-	int				color;
+	t_color				color;
 	struct s_sphere	*next;
 }	t_sphere;
 
@@ -68,7 +68,7 @@ typedef struct s_light
 	int 			type;
 	t_point			pos;
 	double			range;
-	int				color;
+	t_color				color;
 	struct s_light	*next;
 }	t_light;
 
@@ -79,7 +79,7 @@ typedef struct s_cylinder
 	double				diam;
 	double				height;
 	t_vec				nvec;
-	int					color;
+	t_color				color;
 	struct s_cylinder	*next;
 }	t_cylinder;
 
@@ -89,7 +89,7 @@ typedef struct s_plane
 	int					type;
 	t_point				point;
 	t_vec				nvec;
-	int					color;
+	t_color				color;
 	struct s_plane		*next;
 }	t_plane;
 
