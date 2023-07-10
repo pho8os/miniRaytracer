@@ -23,7 +23,7 @@ t_vec	cross_prod(t_vec v, t_vec u)
 	return((t_vec) {
 		v.y * u.z - v.z * u.y,
 		v.z * u.x - v.x * u.z,
-		v.x * u.y - v.y * u.z
+		v.x * u.y - v.y * u.x
 	});
 }
 
@@ -34,7 +34,7 @@ t_vec	vecadd(t_vec v, t_vec u)
 
 t_vec	vecxnum(t_vec v, double nb)
 {
-	return ((t_vec){v.x * nb,v.y * nb, v.z * nb});
+	return ((t_vec){v.x * nb, v.y * nb, v.z * nb});
 }
 
 t_vec	vecsub(t_vec v, t_vec u)
@@ -49,5 +49,5 @@ double lengthvec(t_vec v)
 
 t_vec normvec(t_vec v)
 {
-	return(vecxnum(v, lengthvec(v)));
+	return(vecxnum(v, 1 / lengthvec(v)));
 }

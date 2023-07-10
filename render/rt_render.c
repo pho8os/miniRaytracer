@@ -43,7 +43,7 @@ void	init_new_size(t_mlx	*mlx, t_data *data)
 	
 	angle = data->cam->FOV * M_PI / 180;
 	mlx->n_width = tan(angle / 2);
-	mlx->n_height = 800 * mlx->n_width / 900;
+	mlx->n_height = HEIGHT * mlx->n_width / WIDTH;
 	printf("NW->%f, NH->%f\n",mlx->n_width, mlx->n_height);
 }
 
@@ -89,7 +89,7 @@ void intersp(t_ray *ray, t_sphere *sp, t_solution *T, t_light *l, t_light *am)
 	// there is a diffuse : diff = dot * light->col * light->ratio
 	// so col  = amb * amb->ratio + col->obj + diffuse
 	if(dot > 0 && l && am && t > EPS)
-		T->color = coloradd(coefcolor(l->color, dot),coloradd(coefcolor(am->color, am->range), sp->color));
+		T->color = coloradd(coefcolor(l->color, dot * l->range),coloradd(coefcolor(am->color, am->range), sp->color));
 		// T->color = dot * l->color * l->range +  am->color * am->range + sp->color
 	else if(dot < 0 && am && t > EPS)
 		T->color =  sp->color;
@@ -102,14 +102,14 @@ void	rt_rendering(t_data *data)
 	t_mlx mlx;
 
 	mlx.mlx = mlx_init();
-	mlx.win = mlx_new_window(mlx.mlx, 900, 800, "minirt");
+	mlx.win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "minirt");
 	int i , j = -1;
 	init_new_size(&mlx, data);
 	t_solution T;
-	while(++j <= 800)
+	while(++j <= HEIGHT)
 	{
 		i = -1;
-		while(++i <= 900)
+		while(++i <= WIDTH)
 		{
 			T.t = -1;
 			T.color = data->amlight->color;
