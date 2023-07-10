@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/09 06:15:39 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/09 23:02:16 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "../includes/rt_parser.h"
 # include <math.h>
 # include <mlx.h>
+
+
 
 typedef struct s_mlx
 {
@@ -32,6 +34,16 @@ typedef struct s_solution
 	double t;
 	int color;
 } t_solution;
+
+typedef struct s_eq2d
+{
+	double a;
+	double b;
+	double c;
+	double t1;
+	double t2;
+	double delta;
+} t_eq2d;
 
 typedef struct s_ray
 {
