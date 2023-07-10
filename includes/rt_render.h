@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/09 23:02:16 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/10 03:36:02 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_mlx
 typedef struct s_solution
 {
 	double t;
-	int color;
+	t_color color;
 } t_solution;
 
 typedef struct s_eq2d

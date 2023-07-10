@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/10 01:52:46 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/10 05:12:05 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,27 @@
 #include <mlx.h>
 
 
+t_color coefcolor(t_color color, double coef)
+{
+	t_color c;
 
+	c = vecxnum(color, coef);
+	(c.x > 255) && (c.x = 255);
+	(c.y > 255) && (c.y = 255);
+	(c.z > 255) && (c.z = 255);
+	return(c);
+}
+
+t_color coloradd(t_color c1, t_color c2)
+{
+	t_color c;
+
+	c = vecadd(c1, c2);
+	(c.x > 255) && (c.x = 255);
+	(c.y > 255) && (c.y = 255);
+	(c.z > 255) && (c.z = 255);
+	return(c);
+}
 
 
 void	init_new_size(t_mlx	*mlx, t_data *data)
@@ -62,13 +82,14 @@ void intersp(t_ray *ray, t_sphere *sp, t_solution *T, t_light *l, t_light *am)
 	double dot = dot_prod(normvec(vecsub(p, sp->center)) , normvec(vecsub(l->pos, p)));
 	// there is a diffuse : diff = dot * light->col * light->ratio
 	// so col  = amb * amb->ratio + col->obj + diffuse
+	T->t = t;
 	if(dot > 0)
-	{
-		// T->color = dot * l->color * l->range +  am->color * am->range + sp->color;
-	}
-	else{
+		T->color = coloradd(coefcolor(l->color, dot * l->range),coloradd(coefcolor(am->color, am->range), sp->color));
+		// T->color = dot * l->color * l->range +  am->color * am->range + sp->color
+	else
+		T->color = coloradd(coefcolor(am->color, am->range), sp->color);
 	// no diffuse so , col = amb * ratio + obj->col	
-	}
+
 }
 void	rt_rendering(t_data *data)
 {
@@ -86,12 +107,11 @@ void	rt_rendering(t_data *data)
 		while(++i <= 900)
 		{
 			T.t = -1;
-			T.color = 0x010101;
+			T.color = data->amlight->color;
 			t_sphere *sphere = data->sph;
 			t_plane *pl = data->pl;
 			t_ray *ray = gc(sizeof(t_ray), 1);
 			ray = ft_ray(data->cam, i, j, &mlx, ray);
-			// int color =  ray->red << 16 | ray->green << 8 | 0;
 			while(sphere)
 			{
 				intersp(ray, sphere, &T, data->lights, data->amlight);
@@ -102,11 +122,11 @@ void	rt_rendering(t_data *data)
 				interpl(ray, pl, &T);
 				pl = pl->next;
 			}
-			mlx_pixel_put(mlx.mlx, mlx.win, i, j, T.color);
+			int color =  (int)(T.color.x) << 16 |(int)T.color.y << 8 | (int)T.color.z;
+			mlx_pixel_put(mlx.mlx, mlx.win, i, j, color);
 		}
 	}
-	// TODO : take the FOV and update the new width and the height * 4;
-	// TODO : position of camera to send rays;
+
 
 	mlx_loop(mlx.mlx);
 }
