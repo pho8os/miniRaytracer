@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:55:28 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 23:57:44 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/11 07:42:01 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
-#include"../includes/minirt.h"
+#include "libft.h"
+
+static void	ft_error_split(char *error, int status, int opt)
+{
+	if (opt == 1)
+		perror(error);
+	if (opt == 0)
+		write(2, error, ft_strlen(error));
+	exit(status);
+}
 
 static int	count_words(char *str, char *c)
 {
@@ -44,7 +52,7 @@ char	**ft_split(char const *s, char *c, int mode)
 		while (s[i] && ft_strchr(c, s[i]))
 		{
 			if(mode && ft_strchr(c, s[i]) && ft_strchr(c, s[i + 1]))
-				return(ft_error("Error : ft_split\n", 1, 0), NULL);
+				return(ft_error_split("Error : ft_split\n", 1, 0), NULL);
 			i++;
 		}
 		j = i;

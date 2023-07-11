@@ -11,8 +11,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
-#include "../includes/minirt.h"
+// #include "../includes/rt_parser.h"
+#include "minirt.h"
 
 void	add_cylinder_back(t_cylinder **head, t_cylinder *new)
 {
@@ -57,7 +57,8 @@ void	parsecy(t_data *data, char **s)
 	};
 	cy->diam = ft_atod(s[3]);
 	cy->height = ft_atod(s[4]);
-	cy->color = (ft_atoi(rgb[0], 1) << 16) | (ft_atoi(rgb[1], 1) << 8) | ft_atoi(rgb[2], 1);
+	cy->color = (t_color){ft_atoi(rgb[0], 1), ft_atoi(rgb[1], 1), ft_atoi(rgb[2], 1)};
+	// cy->color = (ft_atoi(rgb[0], 1) << 16) | (ft_atoi(rgb[1], 1) << 8) | ft_atoi(rgb[2], 1);
 	cy->next = NULL;
 	add_cylinder_back(&(data->cyl), cy);
 }

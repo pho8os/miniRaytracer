@@ -6,12 +6,11 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/10 04:24:48 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/11 07:54:28 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
-#include "../includes/rt_parser.h"
+#include "minirt.h"
 
 /*
 	• Allowed functions :
@@ -33,7 +32,7 @@ int checkfile(char *file)
 }
 
 // Initilizes mlx params;
-void initdata(t_data *data)
+void	initdata(t_data *data)
 {
 	data->amlight = NULL;
 	data->cam = NULL;
@@ -68,5 +67,6 @@ int main(int ac, char **av)
 	initdata(&data);
 	rt_parsing(&data, fd);
 	check_ranges(&data);
-	printdata(&data);
+	// printdata(&data);
+	rt_rendering(&data);
 }

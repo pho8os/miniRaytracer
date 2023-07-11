@@ -3,13 +3,16 @@ NAME = minirt
 
 CC = cc
 
-SRC =  src/main.c	parsing/rt_parsing.c libgc/gc.c libgc/gc_utils.c\
-	parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parsesp.c  \
-	parsing/utils_pars.c parsing/parseplane.c parsing/parse_ranges.c
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+SRC =  src/main.c libgc/gc.c libgc/gc_utils.c\
+	parsing/parse_ranges.c parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parseplane.c parsing/parsesp.c parsing/rt_parsing.c parsing/utils_pars.c parsing/utils_vec.c \
+	render/ft_rays.c render/rt_render.c render/rendering_utils.c render/colors.c\
+	render/intersections.c render/light.c\
+
+CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibft -Ilibgc -fsanitize=address -g
 
 HEADER =	includes/minirt.h		\
 			includes/rt_parser.h	\
+			includes/rt_render.h	\
 			libgc/gc.h				\
 			libft/libft.h
 
@@ -26,11 +29,11 @@ RM = rm -rf
 all : mylibft $(NAME)
 
 $(NAME): $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(OBJ_DIR) $(LIBFT_ARCHIVE) -o $(NAME)
+	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ_DIR) $(LIBFT_ARCHIVE) -o $(NAME)
 
 obj/%.o : %.c $(HEADER)
 	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INC_HEADER) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 mylibft :
 	make -C libft
