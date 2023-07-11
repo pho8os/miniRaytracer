@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parselights.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:40:59 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/10 01:44:36 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/11 07:25:32 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
-#include "../includes/minirt.h"
+#include "minirt.h"
+
 
 void	add_light_back(t_light **head, t_light *new)
 {

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/10 03:42:09 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/11 07:54:28 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minirt.h"
-#include "../includes/rt_parser.h"
+#include "minirt.h"
 
 /*
 	• Allowed functions :
@@ -33,7 +32,7 @@ int checkfile(char *file)
 }
 
 // Initilizes mlx params;
-void initdata(t_data *data)
+void	initdata(t_data *data)
 {
 	data->amlight = NULL;
 	data->cam = NULL;

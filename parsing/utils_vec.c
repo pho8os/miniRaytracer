@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_vec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 18:55:51 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/06 16:46:53 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/11 07:31:09 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
-#include <math.h>
+#include "rt_render.h"
 
 double dot_prod(t_vec v, t_vec u)
 {

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parseplane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 23:14:11 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/10 01:45:27 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/11 07:25:36 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
-#include "../includes/minirt.h"
+#include "minirt.h"
+
 
 void	add_plane_back(t_plane **head, t_plane *new)
 {
