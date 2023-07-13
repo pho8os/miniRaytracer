@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rays.c                                          :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 01:33:54 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/11 09:05:26 by mfouadi          ###   ########.fr       */
+/*   Created: 2023/07/11 06:23:06 by mfouadi           #+#    #+#             */
+/*   Updated: 2023/07/11 06:23:28 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/rt_render.h"
 
-void	ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray)
+t_color coefcolor(t_color c1, t_color c2, double coef)
 {
-	double		x_map;
-	double		y_map;
-	t_vec up;
-	t_vec side;
+	t_color c;
 
-	ray->origin = cam->center;
-	x_map = (double)(2 * x) / WIDTH - 1;
-	y_map = (double)(2 * y) / HEIGHT - 1;
-	up = (vecxnum(cam->upvec, mlx->n_height * y_map));
-	side = (vecxnum(cam->sidevec, mlx->n_width * x_map));
-	ray->direction = normvec(vecadd(cam->forvec, vecadd(up, side)));
+	c.x = c1.x * (c2.x / 255) * coef;
+	c.y = c1.y * (c2.y / 255) * coef;
+	c.z = c1.z * (c2.z / 255) * coef;
+	return(c);
+}
+
+t_color coloradd(t_color c1, t_color c2)
+{
+	t_color c;
+
+	c = vecadd(c1, c2);
+	(c.x > 255) && (c.x = 255);
+	(c.y > 255) && (c.y = 255);
+	(c.z > 255) && (c.z = 255);
+	return(c);
 }

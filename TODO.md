@@ -4,4 +4,6 @@
 <!-- put ur ass in front of ur mac and learn mdfk for phobos !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- marouane farm ur fkn logtime -->
 //---------------------2DAYS-------------------//
-<!-- next move mzl -->
+
+
+<!-- addcolor for calculating the color of multi lights -->

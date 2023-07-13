@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ranges.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 02:26:55 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/06/19 13:23:37 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/11 07:23:30 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
+#include "minirt.h"
 
 /*
 

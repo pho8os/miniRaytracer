@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parsesp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:34:22 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/10 01:46:14 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/11 07:25:42 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_parser.h"
-#include "../includes/minirt.h"
+#include "minirt.h"
+
 
 void	add_sphere_back(t_sphere **head, t_sphere *new)
 {
