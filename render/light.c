@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 08:39:47 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/11 08:54:36 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/14 09:58:19 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,28 @@
 
 
 
-t_color colormix(t_color c1, t_color c2)
-{
-	t_color c;
-	c.x = c1.x * (c2.x / 255);
-	c.y = c1.y * (c2.y / 255);
-	c.z = c1.z * (c2.z / 255);
-	return(c);
-}
-
 // t_color ambiant(t_sphere sp, )
 
 void    calcul_sphere_light(t_utils *utils, t_sphere *sp, double t)
 {
 	(void)sp;
-    t_point p = vecadd(utils->ray.origin, vecxnum(utils->ray.direction, t));
-	double dot = 0;
+	t_solution *T;
+
+	T = &(utils->T);
+	T->inter = vecadd(utils->ray.origin, vecxnum(utils->ray.direction, t));
+	T->norm = normvec(vecsub(T->inter, utils->T.center));
+	T->lvec = normvec(vecsub(utils->l->pos, T->inter));
+	double dot;
 	
-	dot = dot_prod(normvec(vecsub(p, utils->T.center)) , normvec(vecsub(utils->l->pos, p)));
-	if(dot < 0)
-		dot = 0;
-
-		t_color diffuse = vecxnum(utils->l->color, dot * utils->l->range);
-		t_color ambiant = colormix(utils->T.color, vecxnum(utils->am->color, utils->am->range));
-		t_color lights = colormix(utils->T.color, diffuse);
-		utils->T.color = coloradd(ambiant, lights);
-
-
-
-	// if(dot > 0)
-	// 	utils->T.color = coloradd(coefcolor(sp->color, utils->l->color, dot * utils->l->range), coefcolor(sp->color, utils->am->color, utils->am->range)); 
-	// else
-	// 	utils->T.color = coefcolor(sp->color, utils->am->color, utils->am->range);
-
-	//diffuse bu7du 
-	// if(t > EPS && dot < 0)
-	// 	utils->T.color = colormix(coefcolor(utils->l->color, dot * utils->l->range), sp->color);
+	dot = dot_prod(T->norm, T->lvec);
+	(dot < 0) && (dot = 0);
+	T->Rnorm  = normvec(vecsub(vecxnum(T->norm, 2 * dot), T->lvec)) ;
+	t_color diffuse = vecxnum(utils->l->color, dot * utils->l->range);
+	double specular = pow(dot_prod(normvec(T->Rnorm), normvec(vecsub(utils->ray.origin, T->inter))), 90);
+	t_color speclight = vecxnum(utils->l->color, specular ); 
+	t_color ambiant = vecxnum(utils->am->color, utils->am->range);
+	t_color lights = coloradd(coloradd(speclight, diffuse), ambiant);
+	T->color = coloradd(speclight,T->color);
+	T->color = colormix(T->color, lights);
     return ;
 }

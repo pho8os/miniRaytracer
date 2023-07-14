@@ -32,3 +32,12 @@ t_color coloradd(t_color c1, t_color c2)
 	(c.z > 255) && (c.z = 255);
 	return(c);
 }
+
+t_color colormix(t_color c1, t_color c2)
+{
+	t_color c;
+	c.x = c1.x * (c2.x / 255);
+	c.y = c1.y * (c2.y / 255);
+	c.z = c1.z * (c2.z / 255);
+	return(c);
+}

@@ -14,23 +14,40 @@
 
 void	find_intersections_with_objects(t_data *data, t_utils *utils)
 {
-    t_sphere    *sphere;
+	t_sphere    *sphere;
 
-    
-    utils->l = data->lights;
-    utils->am = data->amlight;
-    sphere = data->sph;
+	
+	utils->l = data->lights;
+	utils->am = data->amlight;
+	sphere = data->sph;
 
-    while(sphere)
-    {
-        intersp(utils, sphere);
-
-
-        sphere = sphere->next;
-    }
-    if(utils->T.t > EPS)
-        calcul_sphere_light(utils, sphere, utils->T.t);
-
-
+	while(sphere)
+	{
+		intersp(utils, sphere);
+		sphere = sphere->next;
+	}
+	sphere = data->sph;
+	if(utils->T.t > EPS)
+	{
+		t_ray tmp = utils->ray;
+		t_point p = vecadd(utils->ray.origin, vecxnum(utils->ray.direction, utils->T.t));
+		utils->ray.origin = p;
+		utils->ray.direction = normvec(vecsub(utils->l->pos, p));
+		t_color zb= utils->T.color;
+		bool isShadow = false;
+		while(sphere)
+		{
+			if(intersp(utils, sphere))
+			{
+				isShadow = true;
+				utils->T.color = colormix(zb, vecxnum(utils->am->color, utils->am->range));
+				break;
+			}
+			sphere = sphere->next;
+		}
+		utils->ray = tmp;
+		if (!isShadow)
+			calcul_sphere_light(utils, sphere, utils->T.t);
+	}    
 	return ;
 }

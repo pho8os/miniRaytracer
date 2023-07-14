@@ -22,7 +22,7 @@ void	interpl(t_ray *ray, t_plane *pl, t_solution *T)
 	((t < T->t || T->t == -1) && t > EPS) && (T->t = t, T->color = pl->color, 0);
 }
 
-void   intersp(t_utils *utils, t_sphere *sp)
+bool   intersp(t_utils *utils, t_sphere *sp)
 {
 	t_eq2d sol;
 	double t;
@@ -33,7 +33,6 @@ void   intersp(t_utils *utils, t_sphere *sp)
 	sol.c = dot_prod(vecsub(utils->ray.origin, sp->center), \
         vecsub(utils->ray.origin, sp->center)) - (sp->diam / 2) * (sp->diam / 2);
 	sol.delta = (sol.b * sol.b) - (4 * sol.a * sol.c);
-	// printf("delta -> %f\n", sol.delta);
 	if(sol.delta > 0)
 	{
 		sol.t1 = (-sol.b + sqrt(sol.delta)) / 2 * sol.a;
@@ -41,8 +40,13 @@ void   intersp(t_utils *utils, t_sphere *sp)
 		t = (sol.t2 > sol.t1) * sol.t1 + (sol.t1 > sol.t2) * sol.t2;
 	}
 	else if(sol.delta == 0)
-	{
 		t = -sol.b / 2 * sol.a;
+	if ((t < utils->T.t || utils->T.t == -1) && t > EPS)  
+	{
+		utils->T.t = t;
+		utils->T.color = sp->color;
+		utils->T.center = sp->center;
+		return(true);
 	}
-	((t < utils->T.t || utils->T.t == -1) && t > EPS) && (utils->T.t = t, utils->T.color = sp->color, utils->T.center = sp->center, 0);
+	return(false);
 }

@@ -15,6 +15,7 @@
 
 # include "rt_parser.h"
 # include <mlx.h>
+# include <stdbool.h>
 
 # define EPS 0.00001
 # define WIDTH 900
@@ -33,6 +34,10 @@ typedef struct s_solution
 {
 	double	t;
 	t_point center;
+	t_point inter;
+	t_vec lvec;
+	t_vec norm;
+	t_vec Rnorm;
 	t_color color;
 } t_solution;
 
@@ -75,12 +80,13 @@ void	ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray);
 /* ************************************************************************** */
 t_color coefcolor(t_color c1, t_color c2, double coef);
 t_color coloradd(t_color c1, t_color c2);
+t_color colormix(t_color c1, t_color c2);
 
 /* ************************************************************************** */
 /*								Intersections								  */
 /* ************************************************************************** */
 void	interpl(t_ray *ray, t_plane *pl, t_solution *T);
-void  intersp(t_utils *utils, t_sphere *sp);
+bool  intersp(t_utils *utils, t_sphere *sp);
 void	find_intersections_with_objects(t_data *data, t_utils *utils);
 
 /* ************************************************************************** */
