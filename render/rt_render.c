@@ -6,11 +6,32 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/15 04:33:30 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/15 07:57:52 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rt_render.h"
+# define DESTROY	17
+# define KEYBOARD	2
+
+static int	destroy_window(t_utils *utils)
+{
+	// mlx_destroy_image(utils->mlx.mlx, utils->mlx.img);
+	mlx_destroy_window(utils->mlx.mlx, utils->mlx.win);
+	exit(0);
+}
+
+static int	key_hook_handler(int key, t_utils *utils)
+{
+	(void)utils;
+	// printf("%d\n", key);
+	if (key == 53)
+	{
+		mlx_destroy_window(utils->mlx.mlx, utils->mlx.win);
+		exit(0);
+	}
+	return (0);
+}
 
 static void	camera_orientation(t_data *data)
 {
@@ -57,12 +78,7 @@ void	rt_rendering(t_data *data, t_utils *utils)
 	}
 	mlx_put_image_to_window(utils->mlx.mlx, utils->mlx.win, \
 		utils->mlx.img->img, 0, 0);
+	mlx_hook(utils->mlx.win, DESTROY, 0, destroy_window, utils);
+	mlx_hook(utils->mlx.win, KEYBOARD, 0, key_hook_handler, utils);
 	mlx_loop(utils->mlx.mlx);
 }
-
-/*
-	// there is a diffuse : diff = dot * light->col * light->ratio
-	// so col  = amb * amb->ratio + col->obj + diffuse
-	// T->color = dot * l->color * l->range +  am->color * am->range + sp->color
-	// no diffuse so , col = amb * ratio + obj->col	
-*/

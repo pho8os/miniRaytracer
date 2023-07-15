@@ -6,11 +6,17 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 06:12:31 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/15 04:31:31 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/15 06:35:26 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_render.h"
+#include "rt_render.h"
+
+typedef struct s_tmp{
+// typedef struct s_tmp_objects t_tmp;
+	t_sphere	*sphere;
+	t_cylinder	*cylinder;
+} t_tmp;
 
 void	put_pixel_on_image(t_img *img, int x, int y, int color)
 {
@@ -26,39 +32,50 @@ void	put_pixel_on_image(t_img *img, int x, int y, int color)
 
 void	find_intersections_with_objects(t_data *data, t_utils *utils)
 {
-	t_sphere    *sphere;
+	t_tmp	tmp;
 
 	utils->l = data->lights;
 	utils->am = data->amlight;
-	sphere = data->sph;
+	tmp.sphere = data->sph;
+	tmp.cylinder = data->cyl;
 
-	while(sphere)
+	while(1)
 	{
-		intersp(utils, sphere);
-		sphere = sphere->next;
+		if (tmp.sphere)
+		{
+			intersp(utils, tmp.sphere);
+			tmp.sphere = tmp.sphere->next;
+		}
+		// if (tmp.cylinder)
+		// {
+		// 	ray_cylinder_intersection(utils, tmp.cylinder);
+		// 	tmp.cylinder = tmp.cylinder->next;
+		// }
+		if (!tmp.sphere) // && tmp.cylinder
+			break;
 	}
-	sphere = data->sph;
 	if(utils->T.t > EPS)
 	{
-		t_ray tmp = utils->ray;
+		t_ray tmp_ray = utils->ray;
 		t_point p = vecadd(utils->ray.origin, vecxnum(utils->ray.direction, utils->T.t));
 		utils->ray.origin = p;
 		utils->ray.direction = normvec(vecsub(utils->l->pos, p));
 		t_color zb= utils->T.color;
 		bool isShadow = false;
-		while(sphere)
+		tmp.sphere = data->sph;
+		while(tmp.sphere)
 		{
-			if(intersp(utils, sphere))
+			if(intersp(utils, tmp.sphere))
 			{
 				isShadow = true;
 				utils->T.color = colormix(zb, vecxnum(utils->am->color, utils->am->range));
 				break;
 			}
-			sphere = sphere->next;
+			tmp.sphere = tmp.sphere->next;
 		}
-		utils->ray = tmp;
+		utils->ray = tmp_ray;
 		if (!isShadow)
-			calcul_sphere_light(utils, sphere, utils->T.t);
+			calcul_sphere_light(utils, tmp.sphere, utils->T.t);
 	}
 	return ;
 }
