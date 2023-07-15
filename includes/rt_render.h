@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/15 02:26:41 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/15 03:08:27 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,24 @@
 # define WIDTH 900
 # define HEIGHT 800
 
+typedef struct s_mlx_image
+{
+	char	*addr;
+	void	*img;
+	int		bits_per_pixel;
+	int		endian;
+	int		line_length;
+}	t_img;
+
+
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*win;
-	double	n_width;
-	double	n_height;
-	double	pixel;
+	void		*mlx;
+	void		*win;
+	t_img		*img;
+	double		n_width;
+	double		n_height;
+	double		pixel;
 }	t_mlx;
 
 typedef struct s_solution
@@ -72,8 +83,9 @@ typedef	struct s_intersection_utils
 /* ************************************************************************** */
 /*								Rendering									  */
 /* ************************************************************************** */
-void	rt_rendering(t_data *data);
+void	rt_rendering(t_data *data, t_utils *utils);
 void	ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray);
+void	put_pixel_on_image(t_img *img, int x, int y, int color);
 
 /* ************************************************************************** */
 /*								Colors										  */
