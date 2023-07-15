@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 06:25:47 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/15 02:21:10 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/15 08:56:19 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,16 @@ bool   intersp(t_utils *utils, t_sphere *sp)
 		return(true);
 	}
 	return(false);
+}
+
+bool	ray_cylinder_intersection(t_utils *utils, t_cylinder *cyl)
+{
+	(void)cyl;
+	(void)utils;
+	/*
+	a   = D|D - (D|V)^2
+	b/2 = D|X - (D|V)*(X|V)
+	c = X|X - (X|V)^2 - r*r
+	*/
+	return (0);
 }

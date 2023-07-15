@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 06:12:31 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/15 06:35:26 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/15 09:15:13 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ typedef struct s_tmp{
 // typedef struct s_tmp_objects t_tmp;
 	t_sphere	*sphere;
 	t_cylinder	*cylinder;
+	t_plane		*plane;
 } t_tmp;
 
 void	put_pixel_on_image(t_img *img, int x, int y, int color)
@@ -29,15 +30,16 @@ void	put_pixel_on_image(t_img *img, int x, int y, int color)
 	return ;
 }
 
-
 void	find_intersections_with_objects(t_data *data, t_utils *utils)
 {
 	t_tmp	tmp;
 
 	utils->l = data->lights;
 	utils->am = data->amlight;
+
 	tmp.sphere = data->sph;
 	tmp.cylinder = data->cyl;
+	tmp.plane = data->pl;
 
 	while(1)
 	{
@@ -46,12 +48,17 @@ void	find_intersections_with_objects(t_data *data, t_utils *utils)
 			intersp(utils, tmp.sphere);
 			tmp.sphere = tmp.sphere->next;
 		}
-		// if (tmp.cylinder)
-		// {
-		// 	ray_cylinder_intersection(utils, tmp.cylinder);
-		// 	tmp.cylinder = tmp.cylinder->next;
-		// }
-		if (!tmp.sphere) // && tmp.cylinder
+		if (tmp.cylinder)
+		{
+			ray_cylinder_intersection(utils, tmp.cylinder);
+			tmp.cylinder = tmp.cylinder->next;
+		}
+		if (tmp.plane)
+		{
+			interpl(&utils->ray, tmp.plane, &utils->T);
+			tmp.plane = tmp.plane->next;
+		}
+		if (!tmp.sphere && !tmp.cylinder && !tmp.plane)
 			break;
 	}
 	if(utils->T.t > EPS)
