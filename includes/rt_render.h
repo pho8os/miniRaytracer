@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rt_render.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/15 08:05:01 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/16 09:23:55 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	find_intersections_with_objects(t_data *data, t_utils *utils);
 /* ************************************************************************** */
 /*								Light										  */
 /* ************************************************************************** */
-void    calcul_sphere_light(t_utils *utils, t_sphere *sp, double t);
+void    calcul_sphere_light(t_utils *utils, t_sphere *sp);
 
 /* ************************************************************************** */
 /*							Vector Calculations								  */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 06:25:47 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/15 12:38:47 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/16 11:35:26 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,15 @@ void	interpl(t_ray *ray, t_plane *pl, t_solution *T)
 	double t;
 	(void)T;
 	// D|V * P|V 
-	t = 1 / (dot_prod(ray->direction, pl->nvec)) * (dot_prod(pl->point, pl->nvec) \
-        - dot_prod(ray->origin, pl->nvec));
-	((t < T->t || T->t == -1) && t > EPS) && (T->t = t, T->color = pl->color, 0);
+	t = dot_prod(vecsub(pl->point, ray->origin), pl->nvec)/dot_prod(ray->direction, pl->nvec);
+	if((t < T->t || T->t == -1) && t > EPS)
+	{
+		T->t = t;
+		T->color = pl->color;
+		T->inter = vecadd(ray->origin, vecxnum(ray->direction, t));
+		T->norm = pl->nvec;
+		// printf("t----> %f\n", t);
+	}
 }
 
 bool   intersp(t_utils *utils, t_sphere *sp)
@@ -46,6 +52,8 @@ bool   intersp(t_utils *utils, t_sphere *sp)
 		utils->T.t = t;
 		utils->T.color = sp->color;
 		utils->T.center = sp->center;
+		utils->T.inter = vecadd(utils->ray.origin, vecxnum(utils->ray.direction, t));
+		utils->T.norm = normvec(vecsub(utils->T.inter, sp->center));
 		return(true);
 	}
 	return(false);
