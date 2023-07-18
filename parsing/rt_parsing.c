@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/11 07:25:45 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/18 01:37:07 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	objparse(t_data *data, char *line, int *i)
 {
 	char **const s = ft_split(line, " \t", 0);
-	if (!s || !(*s))
+	if (!s || !(*s) || **s == '#')
 		return ;
 	if(!ft_strncmp(s[0], "C", 1) && (ft_strlen(s[0]) == 1))
 		return(parsecam(data, s), (*i)++, (void)0);
