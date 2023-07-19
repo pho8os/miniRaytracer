@@ -6,12 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:34:22 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/11 07:25:42 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:21:29 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
+#include "parser.h"
 
 void	add_sphere_back(t_sphere **head, t_sphere *new)
 {

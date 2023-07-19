@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen.h                                           :+:      :+:    :+:   */
+/*   image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 08:37:12 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 11:21:07 by mfouadi          ###   ########.fr       */
+/*   Created: 2023/07/19 11:17:25 by mfouadi           #+#    #+#             */
+/*   Updated: 2023/07/19 11:18:36 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCREEN_H
-# define SCREEN_H
+#ifndef IMAGE_H
+#define IMAGE_H
 
-#include "image.h"
-
-typedef struct s_mlx
+typedef struct s_mlx_image
 {
-	void		*mlx;
-	void		*win;
-	t_img		*img;
-	double		n_width;
-	double		n_height;
-	double		pixel;
-}	t_mlx;
+	char	*addr;
+	void	*img;
+	int		bits_per_pixel;
+	int		endian;
+	int		line_length;
+}	t_img;
 
-#endif // SCREEN_H
+
+#endif // IMAGE_H

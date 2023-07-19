@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 02:26:55 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 09:12:34 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:20:25 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ in range [-1, 1] parse_ranges.c"
 #endif // ERROR_LIGHT
 
 #include "minirt.h"
+#include "parser.h"
 
 
 static void	parse_nvec_ranges(t_vec *nvec)

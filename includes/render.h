@@ -6,18 +6,20 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 09:15:07 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:12:28 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
 # define RENDER_H
 
-// #include "intersection_utils.h"
-#include "vectors.h"
-#include "render_utils.h"
+#include "minirt.h"
 #include "screen.h"
+#include "render_utils.h"
 #include "light.h"
+
+typedef	struct s_data t_data;
+typedef	struct s_light t_light;
 
 typedef	struct s_intersection_utils
 {
@@ -28,5 +30,10 @@ typedef	struct s_intersection_utils
 	t_light		*l;
 }	t_utils;
 
+/* ************************************************************************** */
+/*								Rendering									  */
+/* ************************************************************************** */
+void	rt_rendering(t_data *data, t_utils *utils);
+void	ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray);
 
 #endif // RENDER_H

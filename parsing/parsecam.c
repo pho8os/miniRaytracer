@@ -6,12 +6,13 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 08:47:25 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:20:41 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera.h"
 #include "minirt.h"
+#include "parser.h"
 
 void parsecam(t_data *data, char **s)
 {

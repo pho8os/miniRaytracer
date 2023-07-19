@@ -1,28 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen.h                                           :+:      :+:    :+:   */
+/*   ray_cylinder_intersection.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 08:37:12 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 11:21:07 by mfouadi          ###   ########.fr       */
+/*   Created: 2023/07/19 11:48:38 by mfouadi           #+#    #+#             */
+/*   Updated: 2023/07/19 11:48:39 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCREEN_H
-# define SCREEN_H
-
-#include "image.h"
-
-typedef struct s_mlx
-{
-	void		*mlx;
-	void		*win;
-	t_img		*img;
-	double		n_width;
-	double		n_height;
-	double		pixel;
-}	t_mlx;
-
-#endif // SCREEN_H

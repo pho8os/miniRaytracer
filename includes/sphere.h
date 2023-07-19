@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 08:37:15 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 08:48:23 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 11:59:38 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define SPHERE_H
 
 # include "vectors.h"
+
+// typedef	struct s_utils t_utils;
+
 
 typedef struct s_sphere
 {

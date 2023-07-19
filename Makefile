@@ -3,10 +3,30 @@ NAME = minirt
 
 CC = cc
 
-SRC =  src/main.c libgc/gc.c libgc/gc_utils.c\
-	parsing/parse_ranges.c parsing/parsecam.c parsing/parsecy.c parsing/parselights.c parsing/parseplane.c parsing/parsesp.c parsing/rt_parsing.c parsing/utils_pars.c parsing/utils_vec.c \
-	render/ft_rays.c render/rt_render.c render/rendering_utils.c render/colors.c\
-	render/intersections.c render/light.c\
+SRC =	src/main.c \
+		\
+		libgc/gc.c \
+		libgc/gc_utils.c\
+		\
+		parsing/parse_ranges.c \
+		parsing/parsecam.c \
+		parsing/parsecy.c \
+		parsing/parselights.c \
+		parsing/parseplane.c \
+		parsing/parsesp.c \
+		parsing/rt_parsing.c \
+		parsing/utils_pars.c \
+		parsing/utils_vec.c \
+		\
+		render/ft_rays.c \
+		render/rt_render.c \
+		render/rendering_utils.c \
+		render/intersections.c \
+		render/colors.c \
+		render/light.c \
+		render/ray_plane_intersection.c \
+		render/ray_cylinder_intersection.c \
+		render/ray_sphere_intersection.c
 
 CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibft -Ilibgc -fsanitize=address -g
 

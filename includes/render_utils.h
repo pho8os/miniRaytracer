@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:04:08 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 09:05:57 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 11:21:29 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define RENDER_UTILS_H
 
 #include "vectors.h"
+#include "image.h"
 
 typedef struct s_solution
 {
@@ -25,5 +26,7 @@ typedef struct s_solution
 	t_vec Rnorm;
 	t_color color;
 } t_solution;
+
+void	put_pixel_on_image(t_img *img, int x, int y, int color);
 
 #endif // RENDER_UTILS_H

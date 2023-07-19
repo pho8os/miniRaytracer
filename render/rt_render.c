@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 08:24:23 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 11:32:48 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,27 @@ static int	destroy_window(t_utils *utils)
 	exit(0);
 }
 
-static int	key_hook_handler(int key, t_utils *utils)
+static int	key_hook_handler(int key, t_mlx *mlx)
 {
-	(void)utils;
-	// printf("%d\n", key);
 	if (key == 53)
 	{
-		mlx_destroy_window(utils->mlx.mlx, utils->mlx.win);
+		mlx_destroy_window(mlx->mlx, mlx->win);
 		exit(0);
 	}
 	return (0);
 }
 
-static void	camera_orientation(t_data *data)
+static void	camera_orientation(t_cam *cam)
 {
-	if (!data->cam)
+	if (!cam)
 		return ;
-	data->cam->forvec = normvec(data->cam->forvec);
-	data->cam->sidevec = cross_prod((t_vec){0, 1, 0}, data->cam->forvec);
-	if(!data->cam->sidevec.x && !data->cam->sidevec.y && !data->cam->sidevec.z)
-		data->cam->sidevec = cross_prod((t_vec){1, 0, 0},  data->cam->forvec);
-	data->cam->sidevec = normvec(data->cam->sidevec);
-	data->cam->upvec = cross_prod(data->cam->sidevec, data->cam->forvec);
-	data->cam->upvec = normvec(data->cam->upvec);
+	cam->forvec = normvec(cam->forvec);
+	cam->sidevec = cross_prod((t_vec){0, 1, 0}, cam->forvec);
+	if(!cam->sidevec.x && !cam->sidevec.y && !cam->sidevec.z)
+		cam->sidevec = cross_prod((t_vec){1, 0, 0},  cam->forvec);
+	cam->sidevec = normvec(cam->sidevec);
+	cam->upvec = cross_prod(cam->sidevec, cam->forvec);
+	cam->upvec = normvec(cam->upvec);
 	return ;
 }
 
@@ -51,14 +49,14 @@ static void	init_new_size(t_mlx	*mlx, t_data *data)
 	
 	if (!data->cam || !mlx)
 		return ;
-	camera_orientation(data);
+	camera_orientation(data->cam);
 	angle = data->cam->FOV * M_PI / 180;
 	mlx->n_width = tan(angle / 2);
 	mlx->n_height = HEIGHT * mlx->n_width / WIDTH;
 	// printf("NW->%f, NH->%f\n",mlx->n_width, mlx->n_height);
 }
 
-void	rt_rendering(t_data *data, t_utils *utils)
+void	rt_rendering(t_data *data, t_utils *utils) // cam, T, mlx
 {
 	int		i;
 	int		j;
@@ -81,6 +79,6 @@ void	rt_rendering(t_data *data, t_utils *utils)
 	mlx_put_image_to_window(utils->mlx.mlx, utils->mlx.win, \
 		utils->mlx.img->img, 0, 0);
 	mlx_hook(utils->mlx.win, DESTROY, 0, destroy_window, utils);
-	mlx_hook(utils->mlx.win, KEYBOARD, 0, key_hook_handler, utils);
+	mlx_hook(utils->mlx.win, KEYBOARD, 0, key_hook_handler, utils->mlx.mlx);
 	mlx_loop(utils->mlx.mlx);
 }

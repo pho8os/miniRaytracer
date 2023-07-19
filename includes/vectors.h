@@ -6,13 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 08:44:55 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 09:09:37 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 11:57:03 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTORS_H
 # define VECTORS_H
-
 
 typedef struct s_3d
 {

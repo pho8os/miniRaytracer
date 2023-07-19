@@ -6,11 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 08:39:47 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 08:24:08 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:09:45 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "colors.h"
 
 // static void	specular_light(t_utils *utils, t_solution *T)
 // {
@@ -31,9 +32,8 @@
 // 	return ;
 // }
 
-void    calcul_sphere_light(t_utils *utils, t_sphere *sp)
+void    calcul_light_for_current_pixel(t_utils *utils)
 {
-	(void)sp;
 	t_solution *T;
 
 	T = &(utils->T);

@@ -6,13 +6,13 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 06:23:06 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 08:23:55 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 11:38:41 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "colors.h"
 
-t_color coefcolor(t_color c1, t_color c2, double coef)
+t_color	coefcolor(t_color c1, t_color c2, double coef)
 {
 	t_color c;
 

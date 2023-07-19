@@ -6,12 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 23:14:11 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/11 07:25:36 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:21:36 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
+#include "parser.h"
 
 void	add_plane_back(t_plane **head, t_plane *new)
 {

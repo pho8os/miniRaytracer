@@ -6,12 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/18 01:37:07 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:21:21 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
+#include "parser.h"
 
 void	objparse(t_data *data, char *line, int *i)
 {

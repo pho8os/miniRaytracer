@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 08:38:24 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 08:48:59 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 12:14:00 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define LIGHT_H
 
 #include "vectors.h"
+#include "render.h"
+
+typedef	struct s_intersection_utils t_utils;
 
 typedef struct s_light
 {
@@ -24,4 +27,5 @@ typedef struct s_light
 	struct s_light	*next;
 }	t_light;
 
+void    calcul_light_for_current_pixel(t_utils *utils);
 #endif // LIGHT_H

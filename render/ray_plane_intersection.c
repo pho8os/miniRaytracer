@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen.h                                           :+:      :+:    :+:   */
+/*   ray_plane_intersection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 08:37:12 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 11:21:07 by mfouadi          ###   ########.fr       */
+/*   Created: 2023/07/19 11:40:42 by mfouadi           #+#    #+#             */
+/*   Updated: 2023/07/19 11:43:03 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCREEN_H
-# define SCREEN_H
+#include "plane.h"
+#include "render_utils.h"
 
-#include "image.h"
 
-typedef struct s_mlx
+void	interpl(t_ray *ray, t_plane *pl, t_solution *T)
 {
-	void		*mlx;
-	void		*win;
-	t_img		*img;
-	double		n_width;
-	double		n_height;
-	double		pixel;
-}	t_mlx;
+	double t;
 
-#endif // SCREEN_H
+	t = dot_prod(vecsub(pl->point, ray->origin), pl->nvec) / dot_prod(ray->direction, pl->nvec);
+	
+	if((t < T->t || T->t == -1) && t > EPS)
+	{
+		T->t = t;
+		T->color = pl->color;
+		T->inter = vecadd(ray->origin, vecxnum(ray->direction, t));
+		T->norm = pl->nvec;
+	}
+}
