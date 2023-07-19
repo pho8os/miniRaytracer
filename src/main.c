@@ -6,20 +6,11 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/15 04:14:21 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 04:23:27 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-/*
-	• Allowed functions :
-		open, close, read, write,
-		printf, malloc, free, perror,
-		strerror, exit
-	• All functions of the math library (-lm man man 3 math)
-	• All functions of the MinilibX
-*/
 
 int checkfile(char *file)
 {

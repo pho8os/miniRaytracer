@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 01:33:54 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/15 02:26:36 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/18 11:52:36 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray)
 	t_vec up;
 	t_vec side;
 
+	if (!cam || !mlx || !ray)
+		return ;
 	ray->origin = cam->center;
 	x_map = (double)(2 * x) / WIDTH - 1;
 	y_map = (double)(2 * y) / HEIGHT - 1;
