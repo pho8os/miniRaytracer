@@ -11,10 +11,11 @@ SRC =  src/main.c libgc/gc.c libgc/gc_utils.c\
 CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibft -Ilibgc -fsanitize=address -g
 
 HEADER =	includes/minirt.h		\
-			includes/rt_parser.h	\
-			includes/rt_render.h	\
-			libgc/gc.h				\
-			libft/libft.h
+			# includes/parser.h	\
+			# includes/render.h	\
+			# includes/objects.h	\
+			# libgc/gc.h				\
+			# libft/libft.h
 
 INC_HEADERS =	-Iincludes
 

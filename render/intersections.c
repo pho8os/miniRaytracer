@@ -6,11 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 06:25:47 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 05:10:00 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 09:15:49 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_render.h"
+#include "minirt.h"
+#include "intersection_utils.h"
 
 void	interpl(t_ray *ray, t_plane *pl, t_solution *T)
 {

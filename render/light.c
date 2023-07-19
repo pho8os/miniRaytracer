@@ -6,11 +6,11 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 08:39:47 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 07:07:00 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 08:24:08 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_render.h"
+#include "minirt.h"
 
 // static void	specular_light(t_utils *utils, t_solution *T)
 // {

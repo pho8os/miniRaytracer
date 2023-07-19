@@ -6,13 +6,11 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 04:02:22 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 08:24:23 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_render.h"
-# define DESTROY	17
-# define KEYBOARD	2
+#include "minirt.h"
 
 static int	destroy_window(t_utils *utils)
 {

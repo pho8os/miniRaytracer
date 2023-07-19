@@ -6,11 +6,11 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 01:33:54 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/18 11:52:36 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 08:24:00 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rt_render.h"
+#include "minirt.h"
 
 void	ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray)
 {

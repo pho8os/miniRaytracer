@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:56:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 04:23:27 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 08:33:12 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	init_mlx_window(t_utils *utils)
 
 int main(int ac, char **av)
 {
+	(void)ac;
+	(void)av;
 	int		fd;
 	t_data	data;
 	t_utils	utils;

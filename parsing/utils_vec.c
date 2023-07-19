@@ -6,11 +6,11 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 18:55:51 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/11 07:31:09 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/19 08:23:17 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rt_render.h"
+#include "minirt.h"
 
 double dot_prod(t_vec v, t_vec u)
 {
