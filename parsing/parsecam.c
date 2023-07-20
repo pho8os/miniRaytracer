@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 12:50:35 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/20 20:43:08 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "minirt.h"
 #include "parser.h"
 
-void parsecam(t_data *data, char **s)
+void	parsecam(t_data *data, char **s)
 {
-	char **coordp;
-	char **coordv;
+	char	**coordp;
+	char	**coordv;
 
 	(ptrlen(s) != 4) && (ft_error("Error : parsecam.c\n", 1, 0), 0);
 	(ft_strchr(",", s[1][0]) || ft_strchr(",", s[1][ft_strlen(s[1]) - 1])) \

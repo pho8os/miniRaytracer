@@ -6,15 +6,16 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 09:16:42 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/20 09:20:25 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/20 20:38:57 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int checkfile(char *file)
+// Check if given file has ".rt" and open it, else return error
+int	checkfile(char *file)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(file) - 3;
 	if (ft_strncmp(file + len, ".rt", 3))
@@ -22,7 +23,7 @@ int checkfile(char *file)
 	return (open(file, O_RDONLY));
 }
 
-// Initilizes mlx params;
+// Initilize members in struct "s_data"
 void	initdata(t_data *data)
 {
 	data->amlight = NULL;
