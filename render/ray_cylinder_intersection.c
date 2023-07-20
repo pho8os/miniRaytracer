@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:48:38 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/20 08:52:05 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/20 13:46:47 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ bool	ray_cylinder_intersection(t_utils *utils, t_cylinder *cyl)
 			m = D|V*t + X|V
 			N = nrm( P-C-V*m )
 		*/
+		utils->T.inter = vecadd(utils->ray.origin, vecxnum(utils->ray.direction, t));
 		t_vec p = vecadd(vecxnum(utils->ray.direction, t), x);
 		utils->T.norm = normvec(vecsub(p, vecxnum(cyl_axis, m[0])));
 		return(true);
