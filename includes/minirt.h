@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:58:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 12:19:05 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/20 10:25:11 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 
 # define EPS 0.00001
-# define WIDTH 900
+# define WIDTH 800
 # define HEIGHT 800
 
 # define DESTROY	17
@@ -73,10 +73,9 @@ typedef struct s_data
 /* ************************************************************************** */
 /*								Intersections								  */
 /* ************************************************************************** */
-bool	ray_cylinder_intersection(t_utils *utils, t_cylinder *cyl);
 void	find_intersections_with_objects(t_data *data, t_utils *utils);
-bool  intersp(t_utils *utils, t_sphere *sp);
-
+int		checkfile(char *file);
+void	initdata(t_data *data);
 
 #ifndef ERROR_MSG
 # define ERROR_MSG "ERROR: incorect Input\n"

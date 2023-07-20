@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: absaid <absaid@student.42.fr>              +#+  +:+       +#+         #
+#    By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/18 07:27:30 by absaid            #+#    #+#              #
-#    Updated: 2023/06/17 03:40:01 by absaid           ###   ########.fr        #
+#    Updated: 2023/07/19 12:40:14 by mfouadi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ OBJS = $(patsubst %, obj/%, $(SRCS:.c=.o))
 all:$(NAME)
 
 obj/%.o:%.c libft.h get_next_line.h
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):$(OBJS)

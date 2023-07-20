@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 02:26:55 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 12:20:25 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/20 09:21:26 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ void	check_ranges(t_data *data)
 		parse_light_ranges(data->lights->range, 0, 0);
 	if (data->amlight)
 		parse_light_ranges(0, data->amlight->range, 1);
-
 	return ;
 }

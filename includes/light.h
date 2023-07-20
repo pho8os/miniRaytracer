@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 08:38:24 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 12:14:00 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/20 09:48:48 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "render.h"
 
 typedef	struct s_intersection_utils t_utils;
+typedef	struct s_data t_data;
 
 typedef struct s_light
 {
@@ -27,5 +28,6 @@ typedef struct s_light
 	struct s_light	*next;
 }	t_light;
 
-void    calcul_light_for_current_pixel(t_utils *utils);
+void	check_light_for_current_pixel(t_data *data, t_utils *utils);
+
 #endif // LIGHT_H

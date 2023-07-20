@@ -6,16 +6,17 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 11:32:48 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/20 09:15:38 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "screen.h"
 
-static int	destroy_window(t_utils *utils)
+static int	destroy_window(t_mlx *mlx)
 {
 	// mlx_destroy_image(utils->mlx.mlx, utils->mlx.img);
-	mlx_destroy_window(utils->mlx.mlx, utils->mlx.win);
+	mlx_destroy_window(mlx->mlx, mlx->win);
 	exit(0);
 }
 
@@ -56,13 +57,13 @@ static void	init_new_size(t_mlx	*mlx, t_data *data)
 	// printf("NW->%f, NH->%f\n",mlx->n_width, mlx->n_height);
 }
 
-void	rt_rendering(t_data *data, t_utils *utils) // cam, T, mlx
+void	rt_rendering(t_data *data, t_utils *utils, t_mlx *mlx) // cam, T, mlx
 {
 	int		i;
 	int		j;
 
 	j = -1;
-	init_new_size(&utils->mlx, data);
+	init_new_size(mlx, data);
 	while(++j < HEIGHT)
 	{
 		i = -1;
@@ -70,15 +71,14 @@ void	rt_rendering(t_data *data, t_utils *utils) // cam, T, mlx
 		{
 			utils->T.t = -1;
 			utils->T.color = (t_color){0,0,0};
-			ft_ray(data->cam, i, j, &utils->mlx, &utils->ray);
+			ft_ray(data->cam, i, j, mlx, &utils->ray);
 			find_intersections_with_objects(data, utils);
 			int color = (int)(utils->T.color.x) << 16 |(int)utils->T.color.y << 8 | (int)utils->T.color.z;
-			put_pixel_on_image(utils->mlx.img, i, j, color);
+			put_pixel_on_image(mlx->img, i, j, color);
 		}
 	}
-	mlx_put_image_to_window(utils->mlx.mlx, utils->mlx.win, \
-		utils->mlx.img->img, 0, 0);
-	mlx_hook(utils->mlx.win, DESTROY, 0, destroy_window, utils);
-	mlx_hook(utils->mlx.win, KEYBOARD, 0, key_hook_handler, utils->mlx.mlx);
-	mlx_loop(utils->mlx.mlx);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	mlx_hook(mlx->win, DESTROY, 0, destroy_window, mlx);
+	mlx_hook(mlx->win, KEYBOARD, 0, key_hook_handler, mlx->mlx);
+	mlx_loop(mlx->mlx);
 }

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 08:36:54 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/20 10:10:09 by mfouadi          ###   ########.fr       */
+/*   Created: 2023/07/20 09:16:42 by mfouadi           #+#    #+#             */
+/*   Updated: 2023/07/20 09:20:25 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_H
-# define PLANE_H
+#include "minirt.h"
 
-#include "vectors.h"
-#include "render_utils.h"
-#include <stdbool.h>
-
-#ifndef EPS
-# define EPS 0.00001
-#endif // EPS
-
-typedef struct s_plane
+int checkfile(char *file)
 {
-	int					type;
-	t_point				point;
-	t_vec				nvec;
-	t_color				color;
-	struct s_plane		*next;
-}	t_plane;
+	int len;
 
-bool	interpl(t_ray *ray, t_plane *pl, t_solution *T);
+	len = ft_strlen(file) - 3;
+	if (ft_strncmp(file + len, ".rt", 3))
+		return (-1);
+	return (open(file, O_RDONLY));
+}
 
-#endif // PLANE_H
+// Initilizes mlx params;
+void	initdata(t_data *data)
+{
+	data->amlight = NULL;
+	data->cam = NULL;
+	data->cyl = NULL;
+	data->pl = NULL;
+	data->sph = NULL;
+	data->lights = NULL;
+}

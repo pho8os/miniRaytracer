@@ -4,6 +4,7 @@ NAME = minirt
 CC = cc
 
 SRC =	src/main.c \
+		src/utils.c \
 		\
 		libgc/gc.c \
 		libgc/gc_utils.c\
@@ -16,12 +17,11 @@ SRC =	src/main.c \
 		parsing/parsesp.c \
 		parsing/rt_parsing.c \
 		parsing/utils_pars.c \
-		parsing/utils_vec.c \
 		\
+		render/vector_calculations.c \
 		render/ft_rays.c \
 		render/rt_render.c \
 		render/rendering_utils.c \
-		render/intersections.c \
 		render/colors.c \
 		render/light.c \
 		render/ray_plane_intersection.c \
@@ -30,31 +30,27 @@ SRC =	src/main.c \
 
 CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibft -Ilibgc -fsanitize=address -g
 
-HEADER =	includes/minirt.h		\
-			# includes/parser.h	\
-			# includes/render.h	\
-			# includes/objects.h	\
-			# libgc/gc.h				\
-			# libft/libft.h
-
 INC_HEADERS =	-Iincludes
-
-OBJ = $(SRC:.c=.o)
 
 LIBFT_ARCHIVE = libft/libft.a
 
-OBJ_DIR = $(patsubst %, obj/%, $(OBJ))
+OBJS = $(patsubst %, obj/%, $(SRC:.c=.o))
+
+DEPS = $(OBJS:%.o=%.d)
 
 RM = rm -rf
 
 all : mylibft $(NAME)
 
-$(NAME): $(OBJ_DIR)
-	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJ_DIR) $(LIBFT_ARCHIVE) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJS) $(LIBFT_ARCHIVE) -o $(NAME)
 
-obj/%.o : %.c $(HEADER)
+# -MMD	: generate dependencies as a prerequisite for the rule
+# -MP	: The files generated are added to .PHONY rule
+
+obj/%.o : %.c Makefile
 	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
 mylibft :
 	make -C libft
@@ -70,3 +66,6 @@ fclean : clean
 re : fclean all
 
 .PHONY : clean all fclean re mylibft
+
+#include "Dependency Files"
+-include $(DEPS)

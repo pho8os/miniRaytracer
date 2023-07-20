@@ -15,21 +15,20 @@
 #include "parser.h"
 
 
-void	add_cylinder_back(t_cylinder **head, t_cylinder *new)
+static void	add_cylinder_back(t_cylinder **head, t_cylinder *new)
 {
 	t_cylinder	*tmp;
 
 	if (!*head)
 		return (*head = new, (void)0);
 	tmp = *head;
-	while (tmp -> next)
-		tmp = tmp -> next;
-	tmp -> next = new;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }
 
 void	parsecy(t_data *data, char **s)
 {
-	// TODO: Freeing the 3 double pointers??
 	char **coordp;
 	char **coordv;
 	char **rgb;
