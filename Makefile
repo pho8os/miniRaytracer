@@ -28,7 +28,7 @@ SRC =	src/main.c \
 		render/ray_cylinder_intersection.c \
 		render/ray_sphere_intersection.c
 
-CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibft -Ilibgc #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -Iincludes -Ilibft -Ilibgc -fsanitize=address -g
 
 INC_HEADERS =	-Iincludes
 

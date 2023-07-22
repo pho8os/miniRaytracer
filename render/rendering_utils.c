@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 06:12:31 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/20 10:33:43 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 17:04:20 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "image.h"
+#include "colors.h"
 
 typedef struct s_tmp{
 	t_sphere	*sphere;
@@ -64,7 +65,10 @@ void	find_intersections_with_objects(t_data *data, t_utils *utils)
 	tmp.plane = data->pl;
 
 	get_closest_intersection_for_current_pixel(utils, &tmp);
-	if(utils->T.t > EPS)
+	
+	if(utils->T.t > EPS && data->lights)
 		check_light_for_current_pixel(data, utils);
+	else
+		utils->T.color = colormix(utils->T.color, vecxnum(utils->am->color, utils->am->range));
 	return ;
 }
