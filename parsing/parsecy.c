@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsecy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 18:21:20 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/20 21:21:23 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 16:16:04 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static void	add_cylinder_back(t_cylinder **head, t_cylinder *new)
 
 void	parsecy(t_data *data, char **s)
 {
-	char	**coordp;
-	char	**coordv;
-	char	**rgb;
-	t_cylinder *cy;
-	
+	char		**coordp;
+	char		**vec;
+	char		**rgb;
+	t_cylinder	*cy;
+
 	cy = gc(sizeof(t_cylinder), 1);
 	(ptrlen(s) != 6) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
 	(ft_strchr(",", s[1][0]) || ft_strchr(",", s[1][ft_strlen(s[1]) - 1])) \
@@ -42,21 +42,14 @@ void	parsecy(t_data *data, char **s)
 		&& (ft_error("Error\n", 1, 0), 0);
 	coordp = ft_split(s[1], ",", 1);
 	(ptrlen(coordp) != 3) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
-	coordv = ft_split(s[2], ",", 1);
-	(ptrlen(coordv) != 3) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
+	vec = ft_split(s[2], ",", 1);
+	(ptrlen(vec) != 3) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
 	rgb = ft_split(s[5], ",", 1);
 	(ptrlen(rgb) != 3) && (ft_error("Error : parsecy.c\n", 1, 0), 0);
 	cy->type = CYLINDER;
 	cy->center = (t_point){
-		ft_atod(coordp[0]),
-		ft_atod(coordp[1]),
-		ft_atod(coordp[2])
-	};
-	cy->nvec = (t_vec){
-		ft_atod(coordv[0]),
-		ft_atod(coordv[1]),
-		ft_atod(coordv[2])
-	};
+		ft_atod(coordp[0]), ft_atod(coordp[1]), ft_atod(coordp[2])};
+	cy->nvec = (t_vec){ft_atod(vec[0]), ft_atod(vec[1]), ft_atod(vec[2])};
 	cy->diam = ft_atod(s[3]);
 	cy->height = ft_atod(s[4]);
 	cy->color = (t_color){ft_atoi(rgb[0], 1), ft_atoi(rgb[1], 1), \

@@ -6,7 +6,7 @@
 /*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 13:46:23 by absaid            #+#    #+#             */
-/*   Updated: 2023/06/06 11:05:08 by absaid           ###   ########.fr       */
+/*   Updated: 2023/07/22 15:50:15 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <string.h>
 # include "get_next_line.h"
-
+# include "../libgc/gc.h"
 typedef struct s_list
 {
 	void			*content;

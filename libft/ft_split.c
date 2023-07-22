@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: absaid <absaid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 10:55:28 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/11 07:42:01 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 15:51:36 by absaid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**ft_split(char const *s, char *c, int mode)
 	l = -1;
 	if (!s)
 		return (NULL);
-	p = (char **)malloc(sizeof (char *) * (count_words((char *)s, c) + 1));
+	p = gc(sizeof (char *) * (count_words((char *)s, c) + 1), 1);
 	while (++l < count_words((char *)s, c))
 	{	
 		while (s[i] && ft_strchr(c, s[i]))
