@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 08:37:15 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/20 08:31:54 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 18:23:57 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 # define SPHERE_H
 
 # include "vectors.h"
-#include <stdbool.h>
+# include <stdbool.h>
 
-typedef	struct s_intersection_utils t_utils;
-
+typedef struct s_intersection_utils	t_utils;
 
 typedef struct s_sphere
 {

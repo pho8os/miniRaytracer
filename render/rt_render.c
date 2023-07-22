@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/22 17:24:16 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 19:15:00 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	rt_rendering(t_data *data, t_utils *utils, t_mlx *mlx)
 		{
 			utils->t.t = -1;
 			utils->t.color = (t_color){0, 0, 0};
-			ft_ray(data->cam, i, j, mlx, &utils->ray);
+			ft_ray(data->cam, (int []){i, j}, mlx, &utils->ray);
 			find_intersections_with_objects(data, utils);
 			color = (int)(utils->t.color.x) << 16 | \
 				(int)utils->t.color.y << 8 | (int)utils->t.color.z;

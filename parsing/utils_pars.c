@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 10:57:10 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/20 21:33:53 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 19:08:19 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@ int	ptrlen(char **ptr)
 	return (i);
 }
 
+static void	convert_left_part(char **s, double *res, int *sign)
+{
+	if (*s[0] == '-' || *s[0] == '+')
+	{
+		if (*s[0] == '-')
+			*sign *= -1.0;
+		(*s)++;
+	}
+	while (*s && **s >= '0' && **s <= '9')
+	{
+		*res = (*res * 10.0) + (**s - '0');
+		(*s)++;
+	}	
+	return ;
+}
+
 double	ft_atod(char *s)
 {
 	double	res;
@@ -42,17 +58,7 @@ double	ft_atod(char *s)
 	sign = 1.0;
 	if (!s)
 		ft_error("Error: Invalid Input utils_pars.c\n", 1, 0);
-	if (s[0] == '-' || s[0] == '+')
-	{
-		if (s[0] == '-')
-			sign *= -1.0;
-		s++;
-	}
-	while (*s && *s >= '0' && *s <= '9')
-	{
-		res = (res * 10.0) + (*s - '0');
-		s++;
-	}	
+	convert_left_part(&s, &res, &sign);
 	if (*s == '.' && *(s + 1))
 	{
 		s++;

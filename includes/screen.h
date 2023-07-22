@@ -6,14 +6,14 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 08:37:12 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 11:21:07 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 18:22:38 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCREEN_H
 # define SCREEN_H
 
-#include "image.h"
+# include "image.h"
 
 typedef struct s_mlx
 {

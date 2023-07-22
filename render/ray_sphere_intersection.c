@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:40:45 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/22 17:25:15 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 19:22:53 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,25 @@
 #include "intersection_utils.h"
 #include <stdbool.h>
 
+static void	calcul_sol(t_eq2d *sol, t_utils *utils, t_sphere *sp)
+{
+	sol->a = dot_prod(utils->ray.direction, utils->ray.direction);
+	sol->b = dot_prod(vecsub(utils->ray.origin, sp->center), \
+		utils->ray.direction) * 2;
+	sol->c = dot_prod(vecsub(utils->ray.origin, sp->center), \
+		vecsub(utils->ray.origin, sp->center)) \
+		- (sp->diam / 2) * (sp->diam / 2);
+	sol->delta = (sol->b * sol->b) - (4 * sol->a * sol->c);
+	return ;
+}
+
 bool	intersp(t_utils *utils, t_sphere *sp)
 {
 	t_eq2d	sol;
 	double	t;
 
 	t = 0;
-	sol.a = dot_prod(utils->ray.direction, utils->ray.direction);
-	sol.b = dot_prod(vecsub(utils->ray.origin, sp->center), \
-		utils->ray.direction) * 2;
-	sol.c = dot_prod(vecsub(utils->ray.origin, sp->center), \
-		vecsub(utils->ray.origin, sp->center)) \
-		- (sp->diam / 2) * (sp->diam / 2);
-	sol.delta = (sol.b * sol.b) - (4 * sol.a * sol.c);
+	calcul_sol(&sol, utils, sp);
 	if (sol.delta > 0)
 	{
 		sol.t1 = (-sol.b + sqrt(sol.delta)) / 2 * sol.a;

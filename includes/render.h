@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 12:29:30 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/22 17:23:49 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 19:14:03 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ typedef struct s_intersection_utils
 /*								Rendering									  */
 /* ************************************************************************** */
 void	rt_rendering(t_data *data, t_utils *utils, t_mlx *mlx);
-void	ft_ray(t_cam *cam, int x, int y, t_mlx *mlx, t_ray *ray);
+void	ft_ray(t_cam *cam, int coord[2], t_mlx *mlx, t_ray *ray);
 
 #endif // RENDER_H
