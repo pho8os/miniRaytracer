@@ -6,12 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:17:25 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/19 11:18:36 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 17:11:14 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMAGE_H
-#define IMAGE_H
+# define IMAGE_H
 
 typedef struct s_mlx_image
 {
@@ -21,6 +21,5 @@ typedef struct s_mlx_image
 	int		endian;
 	int		line_length;
 }	t_img;
-
 
 #endif // IMAGE_H

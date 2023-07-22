@@ -6,14 +6,14 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:38:41 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/19 12:49:44 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 17:18:54 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
-#define PARSER_H
+# define PARSER_H
 
-#include "minirt.h"
+# include "minirt.h"
 
 /* ************************************************************************** */
 /*							Parsing Functions								  */
@@ -30,6 +30,4 @@ int		ptrlen(char **ptr);
 void	printdata(t_data *data);
 void	check_ranges(t_data *data);
 
-
 #endif // PARSER_H
-

@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:40:42 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/22 03:37:28 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 16:38:37 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 bool	interpl(t_ray *ray, t_plane *pl, t_solution *T)
 {
-	double t;
-	double div;
+	double	t;
+	double	div;
 
 	div = dot_prod(normvec(ray->direction), pl->nvec);
 	if (div == 0)
 		return (false);
 	t = dot_prod(vecsub(pl->point, ray->origin), pl->nvec) / div;
-	if((t < T->t || T->t == -1) && t > EPS)
+	if ((t < T->t || T->t == -1) && t > EPS)
 	{
 		T->t = t;
 		T->color = pl->color;

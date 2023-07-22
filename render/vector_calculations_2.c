@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersection_utils.h                               :+:      :+:    :+:   */
+/*   vector_calculations_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 08:56:32 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/22 17:11:59 by mfouadi          ###   ########.fr       */
+/*   Created: 2023/07/22 16:48:16 by mfouadi           #+#    #+#             */
+/*   Updated: 2023/07/22 16:49:46 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERSECTION_UTILS_H
-# define INTERSECTION_UTILS_H
+#include "vectors.h"
+#include <math.h>
 
-# include "vectors.h"
-
-typedef struct s_eq2d
+double	lengthvec(t_vec v)
 {
-	double	a;
-	double	b;
-	double	c;
-	double	t1;
-	double	t2;
-	double	delta;
-}	t_eq2d;
+	return (sqrt(dot_prod(v, v)));
+}
 
-#endif // INTERSECTIONS_UTILS_H
+t_vec	normvec(t_vec v)
+{
+	return (vecxnum(v, 1 / lengthvec(v)));
+}

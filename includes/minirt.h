@@ -6,12 +6,12 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 07:58:50 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/20 10:25:11 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 17:18:23 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
-#define MINIRT_H
+# define MINIRT_H
 
 # include <unistd.h>
 # include <math.h>
@@ -24,7 +24,6 @@
 # include "gc.h"
 # include "libft.h"
 
-
 # define EPS 0.00001
 # define WIDTH 800
 # define HEIGHT 800
@@ -32,20 +31,15 @@
 # define DESTROY	17
 # define KEYBOARD	2
 
-#include "camera.h"
-#include "cylinder.h"
-#include "light.h"
-#include "sphere.h"
-#include "plane.h"
-#include "render.h"
-#include "render_utils.h"
-// #include "intersection_utils.h"
+# include "camera.h"
+# include "cylinder.h"
+# include "light.h"
+# include "sphere.h"
+# include "plane.h"
+# include "render.h"
+# include "render_utils.h"
 
-/* ************************************************************************** */
-/*									Enum Struct								  */
-/* ************************************************************************** */
-
-enum s_type
+typedef enum s_type
 {
 	LIGHT,
 	PLANE,
@@ -53,8 +47,7 @@ enum s_type
 	SPHERE,
 	CYLINDER,
 	AMBIENT_LIGHT
-} t_type;
-
+}	t_type;
 
 /* ************************************************************************** */
 /*							Linked list of each object						  */
@@ -77,8 +70,8 @@ void	find_intersections_with_objects(t_data *data, t_utils *utils);
 int		checkfile(char *file);
 void	initdata(t_data *data);
 
-#ifndef ERROR_MSG
-# define ERROR_MSG "ERROR: incorect Input\n"
-#endif // FOV_ERROR
+# ifndef ERROR_MSG
+#  define ERROR_MSG "ERROR: incorect Input\n"
+# endif // FOV_ERROR
 
 #endif
