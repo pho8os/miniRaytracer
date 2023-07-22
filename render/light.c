@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 08:39:47 by mfouadi           #+#    #+#             */
-/*   Updated: 2023/07/20 21:51:03 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 03:37:04 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,7 @@ static void	shadow_or_object_color(t_tmp *tmp, t_utils *utils, t_color zb, \
 			}
 			tmp->cylinder = tmp->cylinder->next;
 		}
-		if (tmp->plane)
-		{
-			if (interpl(&utils->ray, tmp->plane, &utils->T))
-			{
-				*is_shadow = true;
-				utils->T.color = colormix(zb, vecxnum(utils->am->color, \
-					utils->am->range));
-				break ;
-			}
-			tmp->plane = tmp->plane->next;
-		}
-		if (!tmp->sphere && !tmp->cylinder && !tmp->plane)
+		if (!tmp->sphere && !tmp->cylinder )
 			break ;
 	}
 	return ;

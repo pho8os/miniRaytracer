@@ -6,7 +6,7 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 11:55:32 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/20 09:15:38 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/22 03:10:07 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	init_new_size(t_mlx	*mlx, t_data *data)
 	angle = data->cam->FOV * M_PI / 180;
 	mlx->n_width = tan(angle / 2);
 	mlx->n_height = HEIGHT * mlx->n_width / WIDTH;
-	// printf("NW->%f, NH->%f\n",mlx->n_width, mlx->n_height);
+	printf("NW->%f, NH->%f\n",mlx->n_width, mlx->n_height);
 }
 
 void	rt_rendering(t_data *data, t_utils *utils, t_mlx *mlx) // cam, T, mlx
