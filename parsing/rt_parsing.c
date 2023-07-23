@@ -6,14 +6,14 @@
 /*   By: mfouadi <mfouadi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 08:39:57 by absaid            #+#    #+#             */
-/*   Updated: 2023/07/22 17:14:47 by mfouadi          ###   ########.fr       */
+/*   Updated: 2023/07/23 21:43:00 by mfouadi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "parser.h"
 
-void	objparse(t_data *data, char *line, int *i)
+void	objparse(t_data *data, char *line)
 {
 	char	**s;
 
@@ -21,16 +21,15 @@ void	objparse(t_data *data, char *line, int *i)
 	if (!s || !(*s) || **s == '#')
 		return ;
 	if (!ft_strncmp(s[0], "C", 1) && (ft_strlen(s[0]) == 1))
-		return (parsecam(data, s), (*i)++, (void)0);
-	else if ((!ft_strncmp(s[0], "A", 1) || !ft_strncmp(s[0], "L", 1)
-			|| !ft_strncmp(s[0], "l", 1)) && (ft_strlen(s[0]) == 1))
-		return (parselight(data, s), (*i)++, (void)0);
+		return (parsecam(data, s), (void)0);
+	else if (!ft_strncmp(s[0], "A", 1) || !ft_strncmp(s[0], "L", 1))
+		return (parselight(data, s), (void)0);
 	else if (!ft_strncmp(s[0], "sp", 2) && (ft_strlen(s[0]) == 2))
-		return (parsesp(data, s), (*i)++, (void)0);
+		return (parsesp(data, s), (void)0);
 	else if (!ft_strncmp(s[0], "cy", 2) && (ft_strlen(s[0]) == 2))
-		return (parsecy(data, s), (*i)++, (void)0);
+		return (parsecy(data, s), (void)0);
 	else if (!ft_strncmp(s[0], "pl", 2) && (ft_strlen(s[0]) == 2))
-		return (parsepl(data, s), (*i)++, (void)0);
+		return (parsepl(data, s), (void)0);
 	else
 		ft_error("ERROR: Invalid Input rt.parsing.c", 1, 0);
 	return ;
@@ -48,10 +47,10 @@ void	rt_parsing(t_data *data, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		objparse(data, line, &i);
+		objparse(data, line);
 		free(line);
 	}
-	if (i == 0)
+	if (!data->cam || !data->amlight)
 		ft_error("Error: Empty Map rt_parsing.c", 1, 0);
 	return ;
 }
