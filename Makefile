@@ -41,6 +41,17 @@ DEPS = $(OBJS:%.o=%.d)
 
 RM = rm -rf
 
+HBLK = '\e[1;90m'
+HRED = '\e[1;91m'
+HGRN = '\e[1;92m'
+HYEL = '\e[1;93m'
+HBLU = '\e[1;94m'
+HMAG = '\e[1;95m'
+HCYN = '\e[1;96m'
+HWHT = '\e[1;97m'
+NC ='\033[0m'
+
+
 all : mylibft $(NAME)
 
 $(NAME): $(OBJS)
@@ -50,8 +61,9 @@ $(NAME): $(OBJS)
 # -MP	: The files generated are added to .PHONY rule
 
 obj/%.o : %.c Makefile
-	mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+	@mkdir -p $(dir $@)
+	@ printf ${HYEL}"♠"${HWHT}" Compiled  ▻"${HYEL}" [%-40s]\r"${HWHT} $(notdir $@)
+	@$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
 mylibft :
 	make -C libft
@@ -68,5 +80,6 @@ re : fclean all
 
 .PHONY : clean all fclean re mylibft
 
+.SILENT : clean fclean re mylibft $(NAME)
 #include "Dependency Files"
 -include $(DEPS)
