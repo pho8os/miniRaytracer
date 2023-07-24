@@ -1,7 +1,11 @@
 # Mini RayTracer
 
+<div align="center">
+<img alt="aladin room using raytracing" src="https://github.com/pho8os/miniRaytracer/blob/master/Images/Screen%20Shot%202023-07-24%20at%209.19.59%20PM.png" width=70%>
+</div>
+
 ## Introduction
-The miniRT program generates images using the Raytracing protocol. Those computer-generated images will each represent a scene, 
+The miniRT is a basic program that generates images using the Raytracing protocol. Those computer-generated images will each represent a scene, 
 as seen from a specific angle and position, defined by simple geometric objects, each with its own lighting system.
 
 ## Features
@@ -86,3 +90,20 @@ miniRT My first RayTracer with miniLibX
 - **R,G,B colors in range [0,255]**: 10, 0, 255
 
 ## Images Generated Using This Mini RayTracer
+
+
+<div align="center">
+<img alt="random objects rendered using raytracing" src="https://github.com/pho8os/miniRaytracer/blob/master/Images/Screen%20Shot%202023-07-24%20at%209.23.40%20PM.png" width=70%>
+</div>
+
+<div align="center">
+<img alt="Trees rendered using raytracing" src="https://github.com/pho8os/miniRaytracer/blob/master/Images/Screen%20Shot%202023-07-24%20at%209.25.22%20PM.png" width=70%>
+</div>
+<div align="center">
+<img alt="4 pillars and 3 planes rendered using raytracing" src="https://github.com/pho8os/miniRaytracer/blob/master/Images/Screen%20Shot%202023-07-25%20at%2012.06.49%20AM.png" width=70%>
+</div>
+<div align="center">
+<img alt="Android logo rendered using raytracing" src="https://github.com/pho8os/miniRaytracer/blob/master/Images/Screen%20Shot%202023-07-24%20at%209.26.13%20PM.png" width=70%>
+</div>
+
+
